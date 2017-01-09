@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Social Login Demo</title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="src/css/custom.css">
+</head>
+<body layout="column"layout-fill="">
+    <div id="app" ui-view layout="column"></div>
+
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+
+    <!-- App -->
+    <script src="src/app/app.js"></script>
+    <script src="src/app/config.router.js"></script>
+    <script src="src/app/app.init.js"></script>
+    <script src="src/app/config.js"></script>
+    <script src="src/app/main.js"></script>
+    <script src="src/app/constant.js"></script>
+    <script src="src/app/modules/user/user.js"></script>
+    <script src="src/app/modules/dashboard/dashboard.js"></script>
+
+    <!--Services-->
+    <script src="src/app/modules/services/services.js"></script>
+    <script src="src/app/modules/services/userService.js"></script>
+    <script src="src/app/modules/services/oauthService.js"></script>
+    <script src="src/app/modules/services/httpRequestInterceptor.js"></script>
+
+    <!-- Controllers -->
+    <script src="src/app/modules/user/loginCtrl.js"></script>
+    <script src="src/app/modules/dashboard/dashboardCtrl.js"></script>
+
+
+</body>
+</html>
