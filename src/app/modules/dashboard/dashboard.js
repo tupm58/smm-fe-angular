@@ -8,5 +8,10 @@ dashboard.config(['$stateProvider', function ($stateProvider) {
             url: '/dashboard',
             templateUrl: 'src/app/modules/dashboard/dashboard.html',
             controller: 'dashboardCtrl'
+        })
+        .state('app.dashboard.page', {
+            url: '/page',
+            templateUrl: 'src/app/modules/page/page-list.html',
+            // controller: 'dashboardCtrl'
         });
 }]);
