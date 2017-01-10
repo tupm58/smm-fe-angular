@@ -8,10 +8,9 @@
     function oauthService($rootScope, $http, $cookies, $q, $location, $state) {
 
         return {
-            exchangeToken : exchangeToken
+            exchangeToken : exchangeToken,
+            addPage : addPage
         };
-
-        /////////////////
 
         function exchangeToken(opts, successCallback, failureCallback) {
             return $http({
@@ -30,6 +29,13 @@
             }).catch(function (error) {
                 console.log(error);
                 failureCallback(error);
+            });
+        }
+        function addPage(opts,page_id){
+            return $http({
+                url: "http://localhost:8080/page/"+page_id,
+                method: 'POST',
+                data: opts.data
             });
         }
     }

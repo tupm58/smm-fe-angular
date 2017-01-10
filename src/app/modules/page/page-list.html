@@ -1,0 +1,18 @@
+<button ng-click="getPage()">get page</button>
+<!--<div ng-repeat = 'todo in todos'>-->
+    <!--&lt;!&ndash;{{todo.access_token}}&ndash;&gt;-->
+    <!--<img ng-src="{{avatarUrl}}" alt="" class="md-avatar">-->
+    <!--{{todo.name}}-->
+    <!--<button ng-click="addPage()">add</button>-->
+    <!--</br>-->
+<!--</div>-->
+<section layout="row" layout-xs="column" layout-align="center end" layout-wrap>
+    <md-list>
+        <md-subheader class="md-no-sticky">Your pages, you can manage them</md-subheader>
+        <md-list-item ng-repeat="todo in todos">
+            <img alt="{{ todo.name }}" ng-src="{{todo.picture.data.url}}" class="md-avatar" />
+            <p style="padding-right: 20px">{{ todo.name }}</p>
+            <md-button class="md-raised md-primary" ng-click="addPage(todo.id)">Add</md-button>
+        </md-list-item>
+    </md-list>
+</section>
