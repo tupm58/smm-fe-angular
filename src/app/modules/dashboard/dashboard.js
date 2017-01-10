@@ -13,5 +13,10 @@ dashboard.config(['$stateProvider', function ($stateProvider) {
         url: '/page',
         templateUrl: 'src/app/modules/page/page-list.html',
         controller: 'pageCtrl'
+    })
+    .state('app.dashboard.post', {
+        url: '/post',
+        templateUrl: 'src/app/modules/post/post-list.html',
+        // controller: 'postCtrl'
     });
 }]);

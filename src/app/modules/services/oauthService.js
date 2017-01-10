@@ -8,8 +8,7 @@
     function oauthService($rootScope, $http, $cookies, $q, $location, $state) {
 
         return {
-            exchangeToken : exchangeToken,
-            addPage : addPage
+            exchangeToken : exchangeToken
         };
 
         function exchangeToken(opts, successCallback, failureCallback) {
@@ -31,12 +30,12 @@
                 failureCallback(error);
             });
         }
-        function addPage(opts,page_id){
-            return $http({
-                url: "http://localhost:8080/page/"+page_id,
-                method: 'POST',
-                data: opts.data
-            });
-        }
+        // function addPage(opts,page_id){
+        //     return $http({
+        //         url: "http://localhost:8080/page/"+page_id,
+        //         method: 'POST',
+        //         data: opts.data
+        //     });
+        // }
     }
 })();

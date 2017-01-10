@@ -10,9 +10,10 @@
     <md-list>
         <md-subheader class="md-no-sticky">Your pages, you can manage them</md-subheader>
         <md-list-item ng-repeat="todo in todos">
+            <!--{{todo.id}}-->
             <img alt="{{ todo.name }}" ng-src="{{todo.picture.data.url}}" class="md-avatar" />
             <p style="padding-right: 20px">{{ todo.name }}</p>
-            <md-button class="md-raised md-primary" ng-click="addPage(todo.id)">Add</md-button>
+            <md-button class="md-raised md-primary" ng-click="addPage(todo)">Add</md-button>
         </md-list-item>
     </md-list>
 </section>

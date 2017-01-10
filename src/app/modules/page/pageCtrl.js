@@ -4,7 +4,7 @@
 'use strict';
 angular
     .module('dashboard')
-    .controller('pageCtrl', function ($scope, $rootScope,$location, $cookies,oauthService) {
+    .controller('pageCtrl', function ($scope, $rootScope,$location, $cookies,pageService) {
         console.log('inside page list controller');
         $scope.todos = [];
         $scope.getPage =function() {
@@ -19,22 +19,19 @@ angular
                     }
                 }
             );
-            // FB.api(
-            //     '/me/accounts',
-            //     'GET',
-            //     {"fields":"picture,access_token,name,id"},
-            //     function(response) {
-            //         console.log(response.data[0]);
-            //         for (var i=0; i<response.data.length; i++) {
-            //             $scope.todos.push(response.data[i]);
-            //         }
-            //     }
-            // );
         };
-        $scope.addPage = function (page_id) {
-            oauthService.addPage(page_id)
+        $scope.addPage = function (todo) {
+
+            var request = {
+                pageId:   todo.id,
+                pageName: todo.name,
+                adminRootId:1,
+                accessToken: todo.access_token
+            };
+            console.log(request);
+            pageService.addPage(request)
                 .then(function(){
                     console.log("success");
                 })
-        }
+        };
     });
