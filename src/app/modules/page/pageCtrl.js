@@ -25,8 +25,8 @@ angular
             var request = {
                 pageId:   todo.id,
                 pageName: todo.name,
-                adminRootId:1,
-                accessToken: todo.access_token
+                accessToken: todo.access_token,
+                avatarPageUrl: todo.picture.data.url
             };
             console.log(request);
             pageService.addPage(request)
@@ -34,4 +34,5 @@ angular
                     console.log("success");
                 })
         };
+
     });
