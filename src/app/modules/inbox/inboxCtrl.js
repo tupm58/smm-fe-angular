@@ -16,20 +16,21 @@ angular
                 function (response) {
                     if (response && !response.error) {
                         console.log(response.feed.data);
-                        var count = 0;
                         var feed = response.feed.data;
                         for(var i = 0; i< feed.length;i++ ){
+                            var count = 0;
                             if (feed[i].comments){
                                 var count_comment =0;
-                                console.log(feed[i].comments.data);
                                 for (var j= 0;j<feed[i].comments.data.length;j++) {
                                     count_comment += feed[i].comments.data[j].comment_count;
                                 }
-                                console.log(count_comment);
-                                count += count_comment ;
+                                count = count_comment+feed[i].comments.data.length;
+                                console.log("post_id"+i+": " + count);
+                            }else{
+                                count = count + 1;
+                                console.log("post_id"+i+": "+ count);
                             }
                         }
-                        console.log(count + feed.length);
                     }
                 }
             );
