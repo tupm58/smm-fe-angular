@@ -17,15 +17,14 @@
         
         function addPage(opts){
             return $http({
-                // url: "http://192.168.1.22:8080/page",
-                url: "http://localhost:8080/page",
+                url:  config.basicUrl + "page",
                 method: 'POST',
                 data: opts
             });
         }
         function getPage() {
             return $http ({
-                url: "http://192.168.1.22:8080/pageSave",
+                url: config.basicUrl + "page",
                 method: 'GET'
             })
         }

@@ -11,15 +11,10 @@
     function postService($rootScope, $http, $cookies, $q, $location, $state) {
 
         return {
-            getPage : getPage
+            getPost : getPost
         };
-
-        function getPage(opts){
-            return $http({
-                url: "http://192.168.1.22:8080/pageSave",
-                method: 'POST',
-                data: opts
-            });
+        function getPost(){
+            
         }
     }
 })();
