@@ -22,31 +22,38 @@
                 </md-button>
             </div>
         </md-toolbar>
-        <!--<md-toolbar md-scroll-shrink="" >-->
-            <!--<md-nav-bar  md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">-->
-                <!--<md-nav-item md-nav-click="goto('page1')" name="page1">Post</md-nav-item>-->
-                <!--<md-nav-item md-nav-click="goto('page2')" name="page2">Rule</md-nav-item>-->
-                <!--<md-nav-item md-nav-click="goto('page3')" name="page3">User</md-nav-item>-->
-            <!--</md-nav-bar>-->
-        <!--</md-toolbar>-->
+
         <!-- Content height does not need to be px any more: -->
         <md-content style="height:100%">
-            <ui-view></ui-view>
-            <!--<md-list>-->
-                <!---->
-                <!--<md-list-item class="md-3-line" ng-repeat="item in todos">-->
+            <div layout="row">
+                <div flex="30">
+                    <nav class="main-menu">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <img class="img-responsive img-circle" src="1.jpg">
+                        <span class="nav-text">
+                            tran thanh huyen
+                        </span>
+                                </a>
+                            </li> </br>
+                            <li class="has-subnav">
+                                <a href="#">
+                                    <img class="img-responsive img-circle" src="1.jpg">
+                        <span class="nav-text">
+                            UI Components
+                        </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div flex="40">
+                    <ui-view></ui-view>
 
-                    <!--<div class="md-list-item-text">-->
-                        <!--<h3>{{item.what}}</h3>-->
-                        <!--<h4>{{item.who}}</h4>-->
-                        <!--<p>-->
-                            <!--{{item.notes}}-->
-                        <!--</p>-->
-                    <!--</div>-->
-                    <!--<md-divider inset=""></md-divider>-->
-                <!--</md-list-item>-->
+                </div>
+            </div>
 
-            <!--</md-list>-->
 
         </md-content>
     </div>
