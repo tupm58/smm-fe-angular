@@ -11,8 +11,6 @@
             init : init
         };
 
-        /////////////////
-
         function init($location) {
             console.log("[user service] : initState");
         }

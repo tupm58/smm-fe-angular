@@ -38,9 +38,9 @@ angular
                     OAuthProvider.FACEBOOK,
                     response.authResponse.accessToken
                 );
-            }, function (error) {
-                console.log(error);
-            });
+            },
+                {scope:'public_profile, manage_pages, publish_pages, pages_show_list'}
+            );
         }
         
         function exchangeToken(provider, accessToken) {
