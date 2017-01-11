@@ -28,25 +28,14 @@
             <div layout="row">
                 <div flex="30">
                     <nav class="main-menu">
-                        <md-button class="md-raised md-primary" ng-click="getPage()">get page from be</md-button>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <img class="img-responsive img-circle" src="1.jpg">
-                        <span class="nav-text">
-                            tran thanh huyen
-                        </span>
+                        <md-list>
+                            <md-list-item ng-repeat="page in pages">
+                                <a ui-sref="app.dashboard.page-detail.inbox({pageId: {{page.pageId}} })">
+                                    <img class="img-responsive img-circle" src="{{page.avatarPageUrl}}">
+                                    <span class="nav-text">{{page.pageName}}</span>
                                 </a>
-                            </li> </br>
-                            <li class="has-subnav">
-                                <a href="#">
-                                    <img class="img-responsive img-circle" src="1.jpg">
-                        <span class="nav-text">
-                            UI Components
-                        </span>
-                                </a>
-                            </li>
-                        </ul>
+                            </md-list-item>
+                        </md-list>
                     </nav>
                 </div>
                 <div flex="40">
