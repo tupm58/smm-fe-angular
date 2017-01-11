@@ -20,17 +20,17 @@ dashboard.config(['$stateProvider', function ($stateProvider) {
         controller: 'pageDetailCtrl'
     })
     .state('app.dashboard.page-detail.inbox', {
-        url: '/page/:pageId/inbox',
+        url: '/inbox',
         templateUrl: 'src/app/modules/inbox/inbox.html',
         controller: 'inboxCtrl'
     })
     .state('app.dashboard.page-detail.rule-page', {
-        url: '/page/:pageId/rule-page',
+        url: '/rule-page',
         templateUrl: 'src/app/modules/rule-page/rule-page.html',
         controller: 'rulePageCtrl'
     })
     .state('app.dashboard.page-detail.manage-user', {
-        url: '/page/:pageId/manage-user',
+        url: '/manage-user',
         templateUrl: 'src/app/modules/manage-user/manage-user.html',
         controller: 'manageUserCtrl'
     })
