@@ -3,7 +3,7 @@ angular.module('services').factory('httpRequestInterceptor', function ($rootScop
         request: function (requestConfig) {
             $rootScope.showToaster = true;
             if ($rootScope.authToken) {
-                requestConfig.headers['auth-token'] = $rootScope.authToken;
+                requestConfig.headers['Authorization'] = $rootScope.authToken;
                 requestConfig.headers['Cache-Control'] = 'private, no-cache, no-store, must-revalidate';
                 requestConfig.headers['Expires'] = '-1';
                 requestConfig.headers['Pragma'] = 'no-cache';

@@ -1,14 +1,23 @@
-/**
- * Created by MinhTu on 1/9/2017.
- */
+// /**
+//  * Created by thanh huyền on 09-Jan-17.
+//  */
+// 'use strict';
 //
-// var dashboard = angular.module('dashboard', []);
-//
-// dashboard.config(['$stateProvider', function ($stateProvider) {
+// angular.module('dashboard', [])
+//    
+// .config(['$stateProvider', function ($stateProvider) {
 //     $stateProvider
 //         .state('app.dashboard.page', {
-//             url: '/page',
-//             templateUrl: 'src/app/modules/page/page.html',
-//             // controller: 'dashboardCtrl'
-//         });
+//         url: '/page',
+//         templateUrl: 'src/app/modules/page/page-list.html',
+//         controller: 'pageCtrl',
+//         resolve: {
+//             initialPageFirst: ['pageService', function (pageService) {
+//                 return pageService.getPageFB()
+//                     .then(function (response) {
+//                         return response.data;
+//                     });
+//             }]
+//         }
+//     });
 // }]);

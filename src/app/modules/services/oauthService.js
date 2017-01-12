@@ -11,8 +11,6 @@
             exchangeToken : exchangeToken
         };
 
-        /////////////////
-
         function exchangeToken(opts, successCallback, failureCallback) {
             return $http({
                 url: config.oauthServiceUrl + "/" + opts.provider + '/access-token/exchange',
@@ -32,5 +30,6 @@
                 failureCallback(error);
             });
         }
+      
     }
 })();
