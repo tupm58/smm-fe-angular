@@ -30,13 +30,13 @@ angular
             );
         };
 
-        $scope.addPage = function (todo) {
+        $scope.addPage = function (page) {
 
             var request = {
-                pageId:   todo.id,
-                pageName: todo.name,
-                accessToken: todo.access_token,
-                avatarPageUrl: todo.picture.data.url
+                pageId:   page.id,
+                pageName: page.name,
+                accessToken: page.access_token,
+                avatarPageUrl: page.picture.data.url
             };
             console.log(request);
             pageService.addPage(request)
