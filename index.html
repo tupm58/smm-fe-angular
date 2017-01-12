@@ -12,25 +12,6 @@
     <link rel="stylesheet" href="src/css/custom.css">
 </head>
 <body layout="column"layout-fill="">
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '222977668161505',
-                xfbml      : true,
-                version    : 'v2.8'
-            });
-            FB.AppEvents.logPageView();
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-
     <div id="app" ui-view layout="column"></div>
 
     <script src="https://apis.google.com/js/platform.js"></script>
@@ -55,20 +36,17 @@
     <script src="src/app/modules/user/user.js"></script>
     <script src="src/app/modules/dashboard/dashboard.js"></script>
     <script src="src/app/modules/page/page.js"></script>
+
     <!--Services-->
     <script src="src/app/modules/services/services.js"></script>
     <script src="src/app/modules/services/userService.js"></script>
     <script src="src/app/modules/services/oauthService.js"></script>
-    <script src="src/app/modules/services/pageService.js"></script>
     <script src="src/app/modules/services/httpRequestInterceptor.js"></script>
 
     <!-- Controllers -->
     <script src="src/app/modules/user/loginCtrl.js"></script>
     <script src="src/app/modules/dashboard/dashboardCtrl.js"></script>
-    <script src="src/app/modules/page/pageCtrl.js"></script>
-    <script src="src/app/modules/page-detail/pageDetailCtrl.js"></script>
-    <script src="src/app/modules/inbox/inboxCtrl.js"></script>
-    <script src="src/app/modules/manage-user/manageUserCtrl.js"></script>
-    <script src="src/app/modules/rule-page/rulePageCtrl.js"></script>
+
+
 </body>
 </html>
