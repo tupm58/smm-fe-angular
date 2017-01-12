@@ -1,12 +1,12 @@
-<md-button class="md-raised md-primary" ng-click="getPage()">get page</md-button>
+<!--<md-button class="md-raised md-primary" ng-click="getPage()">get page</md-button>-->
 
 <section layout="row" layout-xs="column" layout-align="center end" layout-wrap>
     <md-list>
         <md-subheader class="md-no-sticky">Your pages, you can manage them</md-subheader>
-        <md-list-item ng-repeat="todo in todos">
+        <md-list-item ng-repeat="page in pages">
             <!--{{todo.id}}-->
-            <img alt="{{ todo.name }}" ng-src="{{todo.picture.data.url}}" class="md-avatar" />
-            <p style="padding-right: 20px">{{ todo.name }}</p>
+            <img alt="{{ page.name }}" ng-src="{{page.picture.data.url}}" class="md-avatar" />
+            <p style="padding-right: 20px">{{ page.name }}</p>
             <md-button class="md-raised md-primary" ng-click="addPage(todo)">Add</md-button>
         </md-list-item>
     </md-list>
