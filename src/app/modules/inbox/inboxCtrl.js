@@ -13,13 +13,14 @@ angular
         $scope.listPost = [];
 
         function init() {
-            console.log(window.FB);
-            getPost();
+            var page_token = $rootScope.pageAccessToken;
+            console.log(page_token);
+            getPost(page_token);
         }
         init();
         
-        function getPost(){
-            var page_token = $rootScope.pageAccessToken;
+        function getPost(page_token){
+            console.log(page_token);
             FB.api (
                 "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
                 function (response) {

@@ -7,8 +7,8 @@ angular
         
         $scope.pages = initialPageData;
         
-        $scope.getPageDetail = function (page){
-            $rootScope.pageAccessToken = page.accessToken;
-            $cookies.put('page-token', page.accessToken);
-        }
+        // $scope.getPageDetail = function (page){
+        //     // $rootScope.pageAccessToken = page.accessToken;
+        //     $cookies.put('page-token', page.accessToken);
+        // }
     });
