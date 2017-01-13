@@ -28,7 +28,7 @@ angular
                     }
                 }
             );
-        };
+        }
 
         $scope.addPage = function (page) {
 
