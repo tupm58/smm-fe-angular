@@ -3,16 +3,26 @@
  */
 'use strict';
 
+
 angular
     .module('dashboard')
     .controller('inboxCtrl', function ($scope, $rootScope, pageService,$stateParams ) {
         console.log('inside dashboard controller');
         $scope.pageId = $stateParams.pageId;
         console.log($scope.pageId);
-        $scope.getPost = function(){
+        
+        $scope.listPost = [];
+
+        function init() {
+            console.log(window.FB);
+            getPost();
+        }
+        init();
+        
+        function getPost(){
             var page_token ="EAADKzAi0HZBEBALIMZBkOy3Xe4UEAtFLVZBknlZB1OXkcmIIvGSZCfuMucF1oN6OxjOYoEOFyK2FuebKV384hCw7OuYc7iwv5Vw4lgWD4iETHsJ9mfqIBal3HwGPBZAZAvJBX5DvsLprRuhBhsa3TH8xkzy2DR3WLUZD";
             FB.api (
-                "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
+                "me?fields=feed{comments{comment_count},message,created_time}&access_token=" + page_token,
                 function (response) {
                     if (response && !response.error) {
                         console.log(response.feed.data);
@@ -30,9 +40,29 @@ angular
                                 count = count + 1;
                                 console.log("post_id"+i+": "+ count);
                             }
+                            var post = {
+                                message: feed[i].message,
+                                created_time: feed[i].created_time,
+                                totalCmt: count
+                            };
+                            $scope.listPost.push(post);
                         }
+                        // console.log($scope.listPost);
                     }
                 }
             );
+
+            // FB.api (
+            //     "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
+            //     function (response) {
+            //         if (response && !response.error) {
+            //             console.log(response.feed.data[0]);
+            //             for (var i=0; i<response.feed.data.length; i++) {
+            //                 $scope.listPost.push(response.feed.data[i]);
+            //             }
+            //         }
+            //     }
+            // );
+
         }
     });

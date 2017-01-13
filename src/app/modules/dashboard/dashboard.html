@@ -26,21 +26,19 @@
         <!-- Content height does not need to be px any more: -->
         <md-content style="height:100%">
             <div layout="row">
-                <div flex="30">
+                <div flex="5">
                     <nav class="main-menu">
-                        <md-list>
-                            <md-list-item ng-repeat="page in pages">
-                                <a ui-sref="app.dashboard.page-detail.inbox({pageId: {{page.pageId}} })">
-                                    <img class="img-responsive img-circle" src="{{page.avatarPageUrl}}">
-                                    <span class="nav-text">{{page.pageName}}</span>
-                                </a>
-                            </md-list-item>
-                        </md-list>
+                        <li ng-repeat="page in pages">
+                            <a ui-sref="app.dashboard.page-detail.inbox({pageId: {{page.pageId}} })">
+                                <img class="img-responsive img-circle" src="{{page.avatarPageUrl}}" style="padding: 10px 5px;">
+                                <span class="nav-text" style="padding-left: 10px;">{{page.pageName}}</span>
+                            </a>
+                        </li>
                     </nav>
                 </div>
-                <div flex="40">
+                <md-content flex="90">
                     <ui-view></ui-view>
-                </div>
+                </md-content>
             </div>
 
 
