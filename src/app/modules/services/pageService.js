@@ -12,7 +12,8 @@
 
         return {
             addPage : addPage,
-            getPage: getPage
+            getPage: getPage,
+            getPageDetail: getPageDetail
         };
         
         function addPage(opts){
@@ -25,6 +26,12 @@
         function getPage() {
             return $http ({
                 url: config.basicUrl + "page",
+                method: 'GET'
+            })
+        }
+        function getPageDetail(pageId){
+            return $http({
+                url: config.basicUrl + "page/" + pageId ,
                 method: 'GET'
             })
         }

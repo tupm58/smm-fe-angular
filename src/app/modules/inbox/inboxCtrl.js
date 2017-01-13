@@ -8,9 +8,10 @@ angular
     .controller('inboxCtrl', function ($scope, $rootScope, pageService,$stateParams ) {
         console.log('inside dashboard controller');
         $scope.pageId = $stateParams.pageId;
+
         console.log($scope.pageId);
         $scope.getPost = function(){
-            var page_token ="EAADKzAi0HZBEBALIMZBkOy3Xe4UEAtFLVZBknlZB1OXkcmIIvGSZCfuMucF1oN6OxjOYoEOFyK2FuebKV384hCw7OuYc7iwv5Vw4lgWD4iETHsJ9mfqIBal3HwGPBZAZAvJBX5DvsLprRuhBhsa3TH8xkzy2DR3WLUZD";
+            var page_token = $rootScope.pageAccessToken;
             FB.api (
                 "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
                 function (response) {

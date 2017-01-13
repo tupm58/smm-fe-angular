@@ -30,7 +30,7 @@
                     <nav class="main-menu">
                         <md-list>
                             <md-list-item ng-repeat="page in pages">
-                                <a ui-sref="app.dashboard.page-detail.inbox({pageId: {{page.pageId}} })">
+                                <a ng-click="getPageDetail(page)" ui-sref="app.dashboard.page-detail.inbox({pageId: {{page.pageId}} })">
                                     <img class="img-responsive img-circle" src="{{page.avatarPageUrl}}">
                                     <span class="nav-text">{{page.pageName}}</span>
                                 </a>
