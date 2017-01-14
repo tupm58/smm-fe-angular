@@ -20,6 +20,7 @@ angular.module('app')
                     templateUrl: 'src/app/app.html',
                     controller: 'appCtrl'
                 })
+
         }
     ]
 );

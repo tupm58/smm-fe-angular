@@ -22,7 +22,7 @@ angular.module('app').run(
             if (authToken == undefined || authToken == null) {
                 if (toState.name.indexOf("redirect.") == -1
                     && toState.name.indexOf("login") == -1) {
-                    $state.go("app.login");
+                    $state.go("app.login");//==================
                     event.preventDefault();
                     return;
                 }

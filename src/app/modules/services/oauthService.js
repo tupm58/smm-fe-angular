@@ -7,11 +7,15 @@
 
     function oauthService($rootScope, $http, $cookies, $q, $location, $state) {
 
+        var token = '';
+
         return {
-            exchangeToken : exchangeToken
+            exchangeToken : exchangeToken,
+            addToken:addToken,
+            getToken:getToken
         };
 
-        function exchangeToken(opts, successCallback, failureCallback) {
+        function exchangeToken(opts,key, successCallback, failureCallback) {
             return $http({
                 url: config.oauthServiceUrl + "/" + opts.provider + '/access-token/exchange',
                 method: 'POST',
@@ -23,13 +27,29 @@
                 $rootScope.authToken = data.data.accessToken.token;
                 $rootScope.displayName = data.data.accessToken.user.name;
                 $rootScope.avatarUrl = data.data.accessToken.user.avatarUrl;
-                $state.go("app.dashboard");
+
+                // alert("key = " + key);
+                if(key == '1'){
+                    $state.go("app.dashboard");
+                }
+                else{
+                    $state.go("app.verify");
+                }
+                    
                 successCallback(data);
             }).catch(function (error) {
                 console.log(error);
                 failureCallback(error);
             });
         }
-      
+
+        function addToken(opts){
+            token = opts;
+        }
+
+        function getToken(){
+            return token;
+        }
+
     }
 })();

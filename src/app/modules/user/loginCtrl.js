@@ -9,6 +9,12 @@ angular
         $scope.loginFB = loginFB;
         $scope.exchangeToken = exchangeToken;
 
+        $scope.mes = $stateParams.token;
+        // if($scope.mes != null && $scope.mes != '')
+        //     alert($scope.mes);
+        // else
+        //     alert("token empty");
+
         function initData() {
             // init Facebook login
             (function (d, s, id) {
@@ -50,13 +56,26 @@ angular
                     token: accessToken
                 }
             };
-            oauthService.exchangeToken(
-                opts,
-                function (response) {
-                    console.log(response);
-                }, function (error) {
-                    console.log(error);
-                });
+            
+            if( $scope.mes != null && $scope.mes != ''){ // check token exist on link
+                oauthService.addToken($scope.mes);
+                oauthService.exchangeToken(
+                    opts,'2',
+                    function (response) {
+                        console.log(response);
+                    }, function (error) {
+                        console.log(error);
+                    });
+            }else{
+                oauthService.exchangeToken(
+                    opts,'1',
+                    function (response) {
+                        console.log(response);
+                    }, function (error) {
+                        console.log(error);
+                    });
+            }
+            
         }
 
         $scope.initData();

@@ -2,7 +2,7 @@
 
 var dashboard = angular.module('dashboard', []);
 
-dashboard.config(['$stateProvider', function ($stateProvider) {
+dashboard.config(['$stateProvider', function ($stateProvider, $stateParams) {
     $stateProvider
         .state('app.dashboard', {
             url: '/dashboard',
@@ -10,6 +10,7 @@ dashboard.config(['$stateProvider', function ($stateProvider) {
             controller: 'dashboardCtrl',
             resolve: {
                 initialPageData: ['pageService', function (pageService) {
+
                     return pageService.getPage()
                         .then(function (response) {
                             return response.data;
@@ -42,4 +43,5 @@ dashboard.config(['$stateProvider', function ($stateProvider) {
             templateUrl: 'src/app/modules/manage-user/manage-user.html',
             controller: 'manageUserCtrl'
         })
+        
 }]);
