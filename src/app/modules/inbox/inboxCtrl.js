@@ -3,7 +3,6 @@
  */
 'use strict';
 
-
 angular
     .module('dashboard')
     .controller('inboxCtrl', function ($scope, $rootScope, pageService,$stateParams ) {
@@ -11,10 +10,14 @@ angular
         $scope.pageId = $stateParams.pageId;
         console.log($scope.pageId);
         
-        $scope.listPost = [];
+        // $scope.clicked = false;
+        // $scope.click = function () {
+        //   $scope.clicked = !$scope.clicked
+        // };
 
+        $scope.listPost = [];
         function init() {
-            console.log(window.FB);
+            // console.log(window.FB);
             getPost();
         }
         init();
@@ -43,26 +46,47 @@ angular
                             var post = {
                                 message: feed[i].message,
                                 created_time: feed[i].created_time,
-                                totalCmt: count
+                                totalCmt: count,
+                                id: feed[i].id,
+                                clicked: false,
+                                index: i
                             };
                             $scope.listPost.push(post);
                         }
-                        // console.log($scope.listPost);
+                        console.log($scope.listPost);
                     }
                 }
             );
-
-            // FB.api (
-            //     "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
-            //     function (response) {
-            //         if (response && !response.error) {
-            //             console.log(response.feed.data[0]);
-            //             for (var i=0; i<response.feed.data.length; i++) {
-            //                 $scope.listPost.push(response.feed.data[i]);
-            //             }
-            //         }
-            //     }
-            // );
-
+            $scope.expand = false;
+            $scope.postDetail ='';
+            // $scope.expand = [{
+            //     expanded : true,
+            //     postDetail : ''
+            // }];
+            $scope.click = function (index) {
+                // not click, not expand yet
+                if ($scope.expand == false && $scope.listPost[index].clicked == false) {
+                    $scope.expand = true;
+                    $scope.listPost[index].clicked = true;
+                    $scope.postDetail = $scope.listPost[index].message;
+                    // console.log('expand: true, index: ' +index);
+                }
+                    // clicked, expanded
+                else if ($scope.expand == true && $scope.listPost[index].clicked == true) {
+                    $scope.expand = false;
+                    $scope.listPost[index].clicked = false;
+                    // console.log('expand: false, index: ' +index);
+                }
+                    // not click, expanded
+                else if ($scope.expand == true && $scope.listPost[index].clicked == false) {
+                    angular.forEach($scope.listPost, function (post) {
+                        post.clicked = false;
+                    });
+                    $scope.listPost[index].clicked = true;
+                    $scope.expand = true;
+                    $scope.postDetail = $scope.listPost[index].message;
+                    // console.log($scope.postDetail);
+                }
+            };
         }
     });

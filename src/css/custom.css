@@ -175,3 +175,7 @@ nav ul,nav li {
 }
 
 /*custom lai angular material*/
+/*open postDetail*/
+.openDetail {
+    width: 40%;
+}

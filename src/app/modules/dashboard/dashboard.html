@@ -24,7 +24,7 @@
         </md-toolbar>
 
         <!-- Content height does not need to be px any more: -->
-        <md-content style="height:100%">
+        <md-content style="height:100%;" layout="column">
             <div layout="row">
                 <div flex="5">
                     <nav class="main-menu">
@@ -37,11 +37,14 @@
                     </nav>
                 </div>
                 <md-content flex="90">
+                    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+                        <md-nav-item  name="page1" md-nav-sref="app.dashboard.page-detail.inbox">Inbox</md-nav-item>
+                        <md-nav-item  name="page2" md-nav-sref="app.dashboard.page-detail.rule-page">Rule page</md-nav-item>
+                        <md-nav-item  name="page3" md-nav-sref="app.dashboard.page-detail.manage-user">User</md-nav-item>
+                    </md-nav-bar>
                     <ui-view></ui-view>
                 </md-content>
             </div>
-
-
         </md-content>
     </div>
 </div>
