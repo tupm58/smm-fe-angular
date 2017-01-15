@@ -1,9 +1,9 @@
 hello, i'm here in inbox :P </br>
 <!--<md-button class="md-primary md-raised" ng-click="getPost()">get post</md-button>-->
 
-<div ng-class="{openDetail:clicked}" style="float:left" >
-
-    <md-list-item ng-repeat = "post in listPost" flex="90" style="border-bottom: solid 1px #d4d4d4;" ng-click="click(post.index)">
+<md-content ng-class="{openDetail:expand}" layout="column">
+    {{expand}}
+    <md-list-item ng-repeat = "post in listPost" style="border-bottom: solid 1px #d4d4d4; " ng-click="click(post)">
         <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar" />
         <div class="md-list-item-text" layout="column">
             <h4>{{post.message}}</h4>
@@ -19,7 +19,7 @@ hello, i'm here in inbox :P </br>
         <!--</div>-->
         <!--{{clicked}}-->
     <!--</md-list-item>-->
-</div>
+</md-content>
 <div ng-show="expand">
     expand: {{expand}} <br>
     <!--hey, i've just met you, and this' so crazy <br>-->

@@ -59,34 +59,18 @@ angular
             );
             $scope.expand = false;
             $scope.postDetail ='';
-            // $scope.expand = [{
-            //     expanded : true,
-            //     postDetail : ''
-            // }];
-            $scope.click = function (index) {
-                // not click, not expand yet
-                if ($scope.expand == false && $scope.listPost[index].clicked == false) {
-                    $scope.expand = true;
-                    $scope.listPost[index].clicked = true;
-                    $scope.postDetail = $scope.listPost[index].message;
-                    // console.log('expand: true, index: ' +index);
-                }
-                    // clicked, expanded
-                else if ($scope.expand == true && $scope.listPost[index].clicked == true) {
-                    $scope.expand = false;
-                    $scope.listPost[index].clicked = false;
-                    // console.log('expand: false, index: ' +index);
-                }
-                    // not click, expanded
-                else if ($scope.expand == true && $scope.listPost[index].clicked == false) {
-                    angular.forEach($scope.listPost, function (post) {
-                        post.clicked = false;
-                    });
-                    $scope.listPost[index].clicked = true;
-                    $scope.expand = true;
-                    $scope.postDetail = $scope.listPost[index].message;
-                    // console.log($scope.postDetail);
-                }
+
+            $scope.click = function (item) {
+              angular.forEach($scope.listPost,function (i) {
+                 if (i === item){
+                     i.clicked = !i.clicked; console.log(i.clicked);
+                     $scope.expand = i.clicked; console.log($scope.expand);
+                     $scope.postDetail = i.message; console.log(i.message);
+                 }
+                  else {
+                     i.clicked = false;
+                 }
+              });
             };
         }
     });

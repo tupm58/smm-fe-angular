@@ -177,5 +177,6 @@ nav ul,nav li {
 /*custom lai angular material*/
 /*open postDetail*/
 .openDetail {
+    float: left;
     width: 40%;
 }
