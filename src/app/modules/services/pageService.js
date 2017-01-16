@@ -8,7 +8,7 @@
         .module('services')
         .factory('pageService', pageService);
 
-    function pageService($rootScope, $http, $cookies, $q, $location, $state) {
+    function pageService(cfpLoadingBar,$rootScope, $http, $cookies, $q, $location, $state) {
 
         return {
             addPage : addPage,
@@ -24,10 +24,12 @@
             });
         }
         function getPage() {
+            cfpLoadingBar.start();
             return $http ({
                 url: config.basicUrl + "page",
                 method: 'GET'
             })
+            cfpLoadingBar.complete();
         }
         function getPageDetail(pageId){
             return $http({

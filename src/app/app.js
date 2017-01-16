@@ -7,6 +7,7 @@ angular.module('app', [
     'ui.bootstrap',
     'services',
     'user',
-    'dashboard'
+    'dashboard',
+    'angular-loading-bar'
 ]);
 
