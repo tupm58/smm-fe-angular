@@ -2,7 +2,7 @@
 <div layout="column" layout-fill="">
 
     <!-- The outer wrapper - need to set height to px or vh -->
-    <div style="height:700px; overflow:hidden">
+    <div class="customdashboard" >
         <md-toolbar md-scroll-shrink="" md-colors="{background: 'grey-100'}">
             <div class="md-toolbar-tools">
                 <div class="pull-left">
@@ -24,7 +24,7 @@
         </md-toolbar>
 
         <!-- Content height does not need to be px any more: -->
-        <md-content style="height:100%;" layout="column">
+        <md-content class="customdashboard"  layout="column">
             <div layout="row">
                 <div flex="5">
                     <nav class="main-menu">
@@ -37,11 +37,7 @@
                     </nav>
                 </div>
                 <md-content flex="95">
-                    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-                        <md-nav-item  name="page1" md-nav-sref="app.dashboard.page-detail.inbox">Inbox</md-nav-item>
-                        <md-nav-item  name="page2" md-nav-sref="app.dashboard.page-detail.rule-page">Rule page</md-nav-item>
-                        <md-nav-item  name="page3" md-nav-sref="app.dashboard.page-detail.manage-user">User</md-nav-item>
-                    </md-nav-bar>
+
                     <ui-view></ui-view>
                 </md-content>
             </div>
