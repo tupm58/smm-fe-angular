@@ -3,7 +3,6 @@
  */
 'use strict';
 
-
 angular
     .module('dashboard')
     .controller('inboxCtrl', function ($scope, $rootScope, pageService,$stateParams ) {
@@ -11,16 +10,23 @@ angular
         $scope.pageId = $stateParams.pageId;
         console.log($scope.pageId);
         
-        $scope.listPost = [];
+        // $scope.clicked = false;
+        // $scope.click = function () {
+        //   $scope.clicked = !$scope.clicked
+        // };
 
+        $scope.listPost = [];
         function init() {
-            console.log(window.FB);
-            getPost();
+            // console.log(window.FB);
+            var page_token = $rootScope.pageAccessToken;
+            console.log(page_token);
+            getPost(page_token);
         }
         init();
         
-        function getPost(){
-            var page_token ="EAADKzAi0HZBEBALIMZBkOy3Xe4UEAtFLVZBknlZB1OXkcmIIvGSZCfuMucF1oN6OxjOYoEOFyK2FuebKV384hCw7OuYc7iwv5Vw4lgWD4iETHsJ9mfqIBal3HwGPBZAZAvJBX5DvsLprRuhBhsa3TH8xkzy2DR3WLUZD";
+        function getPost(page_token){
+            // var page_token ="EAADKzAi0HZBEBALIMZBkOy3Xe4UEAtFLVZBknlZB1OXkcmIIvGSZCfuMucF1oN6OxjOYoEOFyK2FuebKV384hCw7OuYc7iwv5Vw4lgWD4iETHsJ9mfqIBal3HwGPBZAZAvJBX5DvsLprRuhBhsa3TH8xkzy2DR3WLUZD";
+            console.log(page_token);
             FB.api (
                 "me?fields=feed{comments{comment_count},message,created_time}&access_token=" + page_token,
                 function (response) {
@@ -43,26 +49,39 @@ angular
                             var post = {
                                 message: feed[i].message,
                                 created_time: feed[i].created_time,
-                                totalCmt: count
+                                totalCmt: count,
+                                postId: feed[i].id,
+                                clicked: false,
+                                index: i
                             };
                             $scope.listPost.push(post);
                         }
-                        // console.log($scope.listPost);
+                        console.log($scope.listPost);
                     }
                 }
             );
+            $scope.expand = false;
+            $scope.postDetail =[];
 
-            // FB.api (
-            //     "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
-            //     function (response) {
-            //         if (response && !response.error) {
-            //             console.log(response.feed.data[0]);
-            //             for (var i=0; i<response.feed.data.length; i++) {
-            //                 $scope.listPost.push(response.feed.data[i]);
-            //             }
-            //         }
-            //     }
-            // );
-
+            $scope.click = function (post) {
+                FB.api(
+                    post.postId + "?fields=comments{comments},message,picture&access_token=" + $rootScope.pageAccessToken,
+                    function (response) {
+                        if (response && !response.error) {
+                            $scope.postDetail = response;
+                            console.log(response);
+                        }
+                    }
+                );
+                  angular.forEach($scope.listPost,function (i) {
+                     if (i === post){
+                         i.clicked = !i.clicked;
+                         $scope.expand = i.clicked;
+                     }
+                      else {
+                         i.clicked = false;
+                     }
+                  });
+            };
         }
     });
