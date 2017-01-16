@@ -13,11 +13,7 @@
         return {
             addPage : addPage,
             getPage: getPage,
-            getAllUserWithPage : getAllUserWithPage,
-            deleteUserWithPage : deleteUserWithPage,
-            editRole: editRole,
-            inviteUser:inviteUser,
-            verifyUser: verifyUser
+            getPageDetail: getPageDetail
         };
         
         function addPage(opts){
@@ -33,42 +29,10 @@
                 method: 'GET'
             })
         }
-
-        function getAllUserWithPage(opts) {
+        function getPageDetail(pageId){
             return $http({
-                url : config.basicUrl + "/users/" + opts,
-                method : 'POST'
-            })
-        }
-
-        function deleteUserWithPage(opts) {
-            return $http({
-                url : config.basicUrl + "/deleteUser",
-                method : 'POST',
-                data : opts
-            })
-        }
-
-        function editRole(opts) {
-            return $http({
-                url: config.basicUrl + "/updateRole",
-                method : 'POST',
-                data : opts
-            })
-        }
-
-        function inviteUser(opts) {
-            return $http({
-                url: config.basicUrl + "/user",
-                method : 'POST',
-                data : opts
-            })
-        }
-
-        function verifyUser(opts) {
-            return $http({
-                url : config.basicUrl + "/test/" + opts,
-                method : 'POST'
+                url: config.basicUrl + "page/" + pageId ,
+                method: 'GET'
             })
         }
     }

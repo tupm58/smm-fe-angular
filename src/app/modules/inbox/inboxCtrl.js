@@ -6,11 +6,21 @@
 angular
     .module('dashboard')
     .controller('inboxCtrl', function ($scope, $rootScope, pageService,$stateParams ) {
-        console.log('inside dashboard controller');
+        console.log('inside inbox controller');
         $scope.pageId = $stateParams.pageId;
         console.log($scope.pageId);
-        $scope.getPost = function(){
-            var page_token ="EAADKzAi0HZBEBALIMZBkOy3Xe4UEAtFLVZBknlZB1OXkcmIIvGSZCfuMucF1oN6OxjOYoEOFyK2FuebKV384hCw7OuYc7iwv5Vw4lgWD4iETHsJ9mfqIBal3HwGPBZAZAvJBX5DvsLprRuhBhsa3TH8xkzy2DR3WLUZD";
+        
+        $scope.listPost = [];
+
+        function init() {
+            var page_token = $rootScope.pageAccessToken;
+            console.log(page_token);
+            getPost(page_token);
+        }
+        init();
+        
+        function getPost(page_token){
+            console.log(page_token);
             FB.api (
                 "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
                 function (response) {
@@ -30,6 +40,12 @@ angular
                                 count = count + 1;
                                 console.log("post_id"+i+": "+ count);
                             }
+                            var post = {
+                                message: feed[i].message,
+                                created_time: feed[i].created_time,
+                                totalCmt: count
+                            };
+                            $scope.listPost.push(post);
                         }
                     }
                 }

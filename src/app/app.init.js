@@ -6,7 +6,8 @@ angular.module('app').run(
         $rootScope.authToken = $cookies.get('auth-token');
         $rootScope.displayName = $cookies.get('display-name');
         $rootScope.avatarUrl = $cookies.get('avatar-url');
-
+        // $rootScope.pageAccessToken = $cookies.get('page-token');
+        
         $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
             console.log("Step: stateChangeStart");
             $rootScope.isShowOverlay = false;
