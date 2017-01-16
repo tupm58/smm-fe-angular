@@ -5,7 +5,8 @@
 
 angular
     .module('dashboard')
-    .controller('inboxCtrl', function ($scope, $rootScope, pageService,$stateParams ) {
+    .controller('inboxCtrl', function (cfpLoadingBar,$scope, $rootScope, pageService,$stateParams ) {
+        cfpLoadingBar.start();
         console.log('inside inbox controller');
         $scope.pageId = $stateParams.pageId;
         console.log($scope.pageId);
@@ -20,6 +21,7 @@ angular
         init();
         
         function getPost(page_token){
+
             console.log(page_token);
             FB.api (
                 "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
@@ -50,5 +52,6 @@ angular
                     }
                 }
             );
+            cfpLoadingBar.complete();
         }
     });
