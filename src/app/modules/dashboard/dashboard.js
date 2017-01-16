@@ -2,7 +2,7 @@
 
 var dashboard = angular.module('dashboard', []);
 
-dashboard.config(['$stateProvider', function ($stateProvider) {
+dashboard.config(['$stateProvider', function ($stateProvider,$scope,$stateParams,$rootScope) {
     $stateProvider
         .state('app.dashboard', {
             url: '/dashboard',
@@ -25,7 +25,15 @@ dashboard.config(['$stateProvider', function ($stateProvider) {
         .state('app.dashboard.page-detail', {
             url: '/page/:pageId',
             templateUrl: 'src/app/modules/page-detail/page-detail.html',
-            controller: 'pageDetailCtrl'
+            controller: 'pageDetailCtrl',
+            resolve: {
+                initialPageDetailData: ['pageService','$stateParams', function (pageService,$stateParams) {
+                    return pageService.getPageDetail($stateParams.pageId)
+                        .then(function (response) {
+                            return response.data;
+                        });
+                }]
+            }
         })
         .state('app.dashboard.page-detail.inbox', {
             url: '/inbox',
