@@ -2,7 +2,7 @@
 
 angular
     .module('dashboard')
-    .controller('dashboardCtrl', function ($scope, $rootScope, pageService,initialPageData,$cookies) {
+    .controller('dashboardCtrl', function (cfpLoadingBar,$scope, $rootScope, pageService,initialPageData,$cookies) {
         console.log('inside dashboard controller');
         
         $scope.pages = initialPageData;

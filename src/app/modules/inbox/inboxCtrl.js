@@ -5,7 +5,7 @@
 
 angular
     .module('dashboard')
-    .controller('inboxCtrl', function ($scope, $rootScope, pageService,$stateParams ) {
+    .controller('inboxCtrl', function (cfpLoadingBar,$scope, $rootScope, pageService,$stateParams ) {
         console.log('inside dashboard controller');
         $scope.pageId = $stateParams.pageId;
         console.log($scope.pageId);
@@ -25,6 +25,7 @@ angular
         init();
         
         function getPost(page_token){
+            cfpLoadingBar.start();
             // var page_token ="EAADKzAi0HZBEBALIMZBkOy3Xe4UEAtFLVZBknlZB1OXkcmIIvGSZCfuMucF1oN6OxjOYoEOFyK2FuebKV384hCw7OuYc7iwv5Vw4lgWD4iETHsJ9mfqIBal3HwGPBZAZAvJBX5DvsLprRuhBhsa3TH8xkzy2DR3WLUZD";
             console.log(page_token);
             FB.api (
@@ -56,6 +57,7 @@ angular
                             };
                             $scope.listPost.push(post);
                         }
+                        cfpLoadingBar.complete();
                         console.log($scope.listPost);
                     }
                 }
