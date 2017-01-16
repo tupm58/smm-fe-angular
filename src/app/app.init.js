@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('app').run(
-    function ($rootScope, userService, oauthService, $location, $state, $cookies, $window, $uibModalStack) {
-
+    function ($rootScope, userService, oauthService, $location, $state, $cookies, $window, $uibModalStack, $stateParams) {
+        
         $rootScope.authToken = $cookies.get('auth-token');
         $rootScope.displayName = $cookies.get('display-name');
         $rootScope.avatarUrl = $cookies.get('avatar-url');

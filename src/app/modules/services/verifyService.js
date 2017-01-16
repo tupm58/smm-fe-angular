@@ -10,11 +10,11 @@
             checkToken:checkToken
         };
         
-        function checkToken(opts, token) {
+        function checkToken(userId, token) {
             return $http({
-                url : config.basicUrl + '/test/'+token,
-                method : 'POST'
-                //data : opts
+                url : config.basicUrl + '/verifyUser/'+ userId + "/" + token,
+                method : 'POST',
+               // data : opts
             })
         }
     }

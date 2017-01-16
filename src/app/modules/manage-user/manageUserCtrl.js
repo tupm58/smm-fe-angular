@@ -11,11 +11,13 @@ angular
         $scope.customFullscreen = false;
         $scope.editUser = {};
         $scope.userList = [];
+        //todo: Sau nay phai sua
         $cookieStore.put('pageID', '170949620053038');
         $cookieStore.put('HostName', 'Hung Pham');
         $scope.filterStr = {};
 
-        pageService.getAllUserWithPage().then(function (response) {
+        $scope.pageId = $cookieStore.get('pageID');
+        pageService.getAllUserWithPage($scope.pageId).then(function (response) {
             $scope.userList = response.data;
         })
 
@@ -44,12 +46,19 @@ angular
             })
                 .then(function(answer) {
                     if(user.role != answer){
-                        alert("Khac");
-                        $scope.tmp = user;
+                        $scope.tmp = {};
+                       angular.copy(user, $scope.tmp);
                         $scope.tmp.role = answer;
                         pageService.editRole ($scope.tmp).then(function (response) {
-                            user.role = answer;
-                            alert("Update Role Success");
+                            var messageEdit = response.data;
+
+                            if(messageEdit == 'success'){
+                                user.role = answer;
+                                alert("Update Role Success");
+                            }else{
+                                alert("Don't edit role of this User");
+                            }
+
                         })
                     }
                    // $scope.status = 'You said the information was "' + answer + '".';
@@ -86,7 +95,7 @@ angular
                 clickOutsideToClose:true,
                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
             }).then(function (answer, role) {
-                alert(answer );
+                //alert(answer );
                 var str = answer.split('-');
                 $scope.invite = {};
                 $scope.invite.pageId = $cookieStore.get('pageID');
@@ -98,7 +107,7 @@ angular
                     if(response.data == 'success'){
                         alert('Send Email Successly!');
                     }else {
-                        alert('Have Error! Try Again');
+                        alert('Do not use this email! Try Again');
                     }
                 })
                     // $scope.status = 'You said the information was "' + answer + '".';

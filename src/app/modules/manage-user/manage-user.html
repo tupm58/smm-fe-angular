@@ -1,22 +1,23 @@
-<div class="md-padding dialogdemoBasicUsage" id="popupContainer" ng-cloak="">
+<div class="md-padding dialogdemoBasicUsage" id="popupContainer" ng-cloak="" style="border-color: red">
     <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
-        <input type="text" ng-model="filterStr.name"/>
+        <label for="search" style="font-size: 25px">Search</label>
+        <input type="text" ng-model="filterStr.name" id="search" style="float: left; width: 200px"/>
         <md-button class="md-primary md-raised" ng-click="inviteUser($event)">Invite User</md-button>
-        <table>
+        <table style="width:90%">
             <tr>
-                <td>Name</td>
-                <td>Role</td>
-                <td>Action</td>
+                <th style="text-align: center">Name</th>
+                <th style="text-align: center">Role</th>
+                <th style="text-align: center">Action</th>
             </tr>
             <tr ng-repeat="user in userList | filter:filterStr">
-                <td>{{user.name}}</td>
-                <td>{{user.role}}</td>
-                <td>
-                    <md-button class="md-primary md-raised" ng-click="editRole($event, user)">Edit Role</md-button>
+                <td align="center">{{user.name}}</td>
+                <td align="center">{{user.role}}</td>
+                <td colspan="2" align="center">
+                    <md-button class="md-primary md-raised" ng-click="editRole($event, user)">Edit Role</md-button> <md-button class="md-primary md-raised" ng-click="deleteUser($index)">Delete</md-button>
                 </td>
-                <td>
-                    <md-button class="md-primary md-raised" ng-click="deleteUser($index)">Delete</md-button>
-                </td>
+                <!--<td>-->
+                    <!---->
+                <!--</td>-->
             </tr>
 
         </table>

@@ -24,6 +24,7 @@
                 $cookies.put('auth-token', data.data.accessToken.token);
                 $cookies.put('display-name', data.data.accessToken.user.name);
                 $cookies.put('avatar-url', data.data.accessToken.user.avatarUrl);
+                $cookies.put('user-id', data.data.accessToken.user.providerUserId);
                 $rootScope.authToken = data.data.accessToken.token;
                 $rootScope.displayName = data.data.accessToken.user.name;
                 $rootScope.avatarUrl = data.data.accessToken.user.avatarUrl;

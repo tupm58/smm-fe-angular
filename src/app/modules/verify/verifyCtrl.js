@@ -2,21 +2,21 @@
 
 angular
     .module('verify')
-    .controller('verifyCtrl', function ($scope, $rootScope, userService, oauthService, pageService,verifyService ) {
+    .controller('verifyCtrl', function ($scope, $rootScope,$cookies, userService, oauthService, pageService,verifyService ) {
         console.log('inside dashboard controller');
 
         $scope.message = {};
         $scope.param = oauthService.getToken();
        // $scope.param = checkVerifyToken;
 
-        $scope.user = {};
-        verifyService.checkToken($scope.user, $scope.param).then(function (response) {
+        $scope.userId = $cookies.get('user-id');
+        verifyService.checkToken($scope.userId, $scope.param).then(function (response) {
             var result = response.data;
 
             if(result == 'success'){
-                $scope.message = "SUCCESSSSSSSSSSSS";
+                $scope.message = "YOU VERIFIED SUCCESSFULLY";
             }else{
-                $scope.message = "Failllllllllllllll";
+                $scope.message = "VERIFY FAIL";
             }
         })
         

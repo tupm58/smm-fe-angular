@@ -34,10 +34,10 @@
             })
         }
 
-        function getAllUserWithPage() {
+        function getAllUserWithPage(opts) {
             return $http({
-                url : config.basicUrl + "/users",
-                method : 'GET'
+                url : config.basicUrl + "/users/" + opts,
+                method : 'POST'
             })
         }
 
