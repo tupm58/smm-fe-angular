@@ -11,12 +11,9 @@ angular
         $scope.customFullscreen = false;
         $scope.editUser = {};
         $scope.userList = [];
-        //todo: Sau nay phai sua
-       // alert($stateParams.pageId);
-        //$cookieStore.put('pageID', '170949620053038');
-        //$cookies.put('HostName', 'Hung Pham');
+        
         $scope.filterStr = {};
-       // $scope.pageId = $cookieStore.get('pageID');
+       
         pageService.getAllUserWithPage($stateParams.pageId).then(function (response) {
             $scope.userList = response.data;
         })
