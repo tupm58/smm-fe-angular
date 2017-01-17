@@ -5,19 +5,19 @@
 
 angular
     .module('dashboard')
-    .controller('manageUserCtrl', function ($scope, $rootScope,$window,$mdDialog,$location,$cookies,$cookieStore, pageService) {
+    .controller('manageUserCtrl', function ($scope, $rootScope,$window,$mdDialog,$location,$cookies,$cookieStore, pageService, $stateParams) {
         console.log('inside dashboard controller');
 
         $scope.customFullscreen = false;
         $scope.editUser = {};
         $scope.userList = [];
         //todo: Sau nay phai sua
-        $cookieStore.put('pageID', '170949620053038');
-        $cookieStore.put('HostName', 'Hung Pham');
+       // alert($stateParams.pageId);
+        //$cookieStore.put('pageID', '170949620053038');
+        //$cookies.put('HostName', 'Hung Pham');
         $scope.filterStr = {};
-        //todo: xu li
-        $scope.pageId = $cookieStore.get('pageID');
-        pageService.getAllUserWithPage($scope.pageId).then(function (response) {
+       // $scope.pageId = $cookieStore.get('pageID');
+        pageService.getAllUserWithPage($stateParams.pageId).then(function (response) {
             $scope.userList = response.data;
         })
 
@@ -99,7 +99,7 @@ angular
                 var str = answer.split('-');
                 $scope.invite = {};
                 $scope.invite.pageId = $cookieStore.get('pageID');
-                $scope.invite.invitedByName = $cookieStore.get('HostName');
+                $scope.invite.invitedByName = $cookies.get('display-name');
                 $scope.invite.emailDes = str[0];
                 $scope.invite.role = str[1];
                // alert($scope.invite.invitedByName + $scope.invite.emailDes + $scope.invite.role );
