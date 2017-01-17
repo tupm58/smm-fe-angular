@@ -15,6 +15,7 @@
             getToken:getToken
         };
 
+        
         function exchangeToken(opts,key, successCallback, failureCallback) {
             return $http({
                 url: config.oauthServiceUrl + "/" + opts.provider + '/access-token/exchange',
