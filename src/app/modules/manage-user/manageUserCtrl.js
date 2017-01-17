@@ -15,7 +15,7 @@ angular
         $cookieStore.put('pageID', '170949620053038');
         $cookieStore.put('HostName', 'Hung Pham');
         $scope.filterStr = {};
-
+        //todo: xu li
         $scope.pageId = $cookieStore.get('pageID');
         pageService.getAllUserWithPage($scope.pageId).then(function (response) {
             $scope.userList = response.data;
