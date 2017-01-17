@@ -10,5 +10,6 @@ angular.module('app', [
     'user',
     'dashboard',
     'angular-loading-bar'
+
 ]);
 
