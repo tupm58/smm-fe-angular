@@ -22,7 +22,8 @@ angular
             pageService.deleteUserWithPage($scope.userList[index]).then(function (response) {
                 if(response.data == "success"){
                     $scope.userList.splice(index, 1);
-                    alert("OK");
+                    $scope
+                    $scope.showAlert = showAlert('Delete User Successfully');
                 }else{
                     alert("Don't Delete This User");
                 }
@@ -30,7 +31,6 @@ angular
         }
 
         $scope.editRole = function(ev, user) {
-            // alert(user.name);
             $mdDialog.show({
                 locals:{editUser: user},
                 controller: DialogController,
@@ -38,8 +38,7 @@ angular
                 parent: angular.element(document.body),
                 controllerAs: 'modal',
                 targetEvent: ev,
-                clickOutsideToClose:true,
-                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                clickOutsideToClose:true
             })
                 .then(function(answer) {
                     if(user.role != answer){
@@ -51,9 +50,9 @@ angular
 
                             if(messageEdit == 'success'){
                                 user.role = answer;
-                                alert("Update Role Success");
+                                showAlert('Edit Role Successfully');
                             }else{
-                                alert("Don't edit role of this User");
+                                showAlert("Don't edit role of this User");
                             }
 
                         })
@@ -89,22 +88,19 @@ angular
                 bindToController: true,
                 controllerAs: 'modal',
                 targetEvent: ev,
-                clickOutsideToClose:true,
-                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                clickOutsideToClose:true
             }).then(function (answer, role) {
-                //alert(answer );
                 var str = answer.split('-');
                 $scope.invite = {};
                 $scope.invite.pageId = $stateParams.pageId;
                 $scope.invite.invitedByName = $cookies.get('display-name');
                 $scope.invite.emailDes = str[0];
                 $scope.invite.role = str[1];
-               // alert($scope.invite.invitedByName + $scope.invite.emailDes + $scope.invite.role );
                 pageService.inviteUser($scope.invite).then(function (response) {
                     if(response.data == 'success'){
-                        alert('Send Email Successly!');
+                        showAlert('Send Email Successly!');
                     }else {
-                        alert('Do not use this email! Try Again');
+                        showAlert('Do not use this email! Try Again');
                     }
                 })
                     // $scope.status = 'You said the information was "' + answer + '".';
@@ -114,9 +110,6 @@ angular
         }
 
         function InviteCtrl($scope, $mdDialog) {
-            // var vm = this;
-            // vm.inviteUser = {};
-            // vm.inviteUser = inviteUser;
 
             $scope.hide = function() {
                 $mdDialog.hide();
@@ -128,10 +121,20 @@ angular
                 $mdDialog.hide(answer);
             };
         }
-        
-        // $scope.filterUser = function () {
-        //     switch($scope.filterStr){
-        //        
-        //     }
-        // }
+
+        function showAlert(message) {
+            // Appending dialog to document.body to cover sidenav in docs app
+            // Modal dialogs should fully cover application
+            // to prevent interaction outside of dialog
+            $mdDialog.show(
+                $mdDialog.alert()
+                    // .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('Message From SMM Tool')
+                    .textContent(message)
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Got it!')
+                    // .targetEvent(ev)
+            );
+        }
     });
