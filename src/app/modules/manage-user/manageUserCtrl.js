@@ -2,7 +2,7 @@
  * Created by thanh huyền on 11-Jan-17.
  */
 'use strict';
-
+// long
 angular
     .module('dashboard')
     .controller('manageUserCtrl', function ($scope, $rootScope,$window,$mdDialog,$location,$cookies,$cookieStore, pageService, $stateParams) {
@@ -22,9 +22,9 @@ angular
             pageService.deleteUserWithPage($scope.userList[index]).then(function (response) {
                 if(response.data == "success"){
                     $scope.userList.splice(index, 1);
-                    alert("OK");
+                    $scope.showAlert = showAlert('Delete User Successfully');
                 }else{
-                    alert("Don't Delete This User");
+                    showAlert("Don't Delete This User");
                 }
             })
         }
@@ -51,9 +51,9 @@ angular
 
                             if(messageEdit == 'success'){
                                 user.role = answer;
-                                alert("Update Role Success");
+                                showAlert('Edit Role Successfully');
                             }else{
-                                alert("Don't edit role of this User");
+                                showAlert("Don't edit role of this User");
                             }
 
                         })
@@ -102,10 +102,9 @@ angular
                // alert($scope.invite.invitedByName + $scope.invite.emailDes + $scope.invite.role );
                 pageService.inviteUser($scope.invite).then(function (response) {
                     if(response.data == 'success'){
-                        alert('Send Email Successly!');
+                        showAlert('Send Email Successly!');
                     }else {
-                        alert('Do not use this email! Try Again');
-                    }
+                        showAlert('Do not use this email! Try Again');                    }
                 })
                     // $scope.status = 'You said the information was "' + answer + '".';
                 }, function(role) {
@@ -128,10 +127,20 @@ angular
                 $mdDialog.hide(answer);
             };
         }
-        
-        // $scope.filterUser = function () {
-        //     switch($scope.filterStr){
-        //        
-        //     }
-        // }
+
+        function showAlert(message) {
+            // Appending dialog to document.body to cover sidenav in docs app
+            // Modal dialogs should fully cover application
+            // to prevent interaction outside of dialog
+            $mdDialog.show(
+                $mdDialog.alert()
+                // .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('Message From SMM Tool')
+                    .textContent(message)
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Got it!')
+                // .targetEvent(ev)
+            );
+        }
     });
