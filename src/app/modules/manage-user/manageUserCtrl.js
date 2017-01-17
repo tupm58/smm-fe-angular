@@ -95,7 +95,7 @@ angular
                 //alert(answer );
                 var str = answer.split('-');
                 $scope.invite = {};
-                $scope.invite.pageId = $cookieStore.get('pageID');
+                $scope.invite.pageId = $stateParams.pageId;
                 $scope.invite.invitedByName = $cookies.get('display-name');
                 $scope.invite.emailDes = str[0];
                 $scope.invite.role = str[1];
