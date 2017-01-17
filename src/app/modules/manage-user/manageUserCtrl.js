@@ -25,7 +25,7 @@ angular
                     $scope
                     $scope.showAlert = showAlert('Delete User Successfully');
                 }else{
-                    alert("Don't Delete This User");
+                    showAlert("Don't Delete This User");
                 }
             })
         }
