@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('app').run(
-    function ($rootScope, userService, oauthService, $location, $state, $cookies, $window, $uibModalStack) {
-
+    function ($rootScope, userService, oauthService, $location, $state, $cookies, $window, $uibModalStack, $stateParams) {
+        
         $rootScope.authToken = $cookies.get('auth-token');
         $rootScope.displayName = $cookies.get('display-name');
         $rootScope.avatarUrl = $cookies.get('avatar-url');
@@ -23,7 +23,7 @@ angular.module('app').run(
             if (authToken == undefined || authToken == null) {
                 if (toState.name.indexOf("redirect.") == -1
                     && toState.name.indexOf("login") == -1) {
-                    $state.go("app.login");
+                    $state.go("app.login");//==================
                     event.preventDefault();
                     return;
                 }

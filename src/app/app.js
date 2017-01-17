@@ -6,6 +6,7 @@ angular.module('app', [
     'ui.router',
     'ui.bootstrap',
     'services',
+    'verify',
     'user',
     'dashboard',
     'angular-loading-bar'
