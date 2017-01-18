@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Social Login Demo</title>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="src/css/custom.css">
+    <style>
+        @font-face {
+            font-family:"icomoon";
+            src:url("https://cdn.rawgit.com/angular/material/master/docs/app/fonts/icomoon.eot");
+            font-weight:normal;
+            font-style:normal;
+        }
+
+        @font-face {
+            font-family: 'icomoon';
+            src:url('https://cdn.rawgit.com/angular/material/master/docs/app/fonts/icomoon.eot?-cmq1um');
+            src:url('https://cdn.rawgit.com/angular/material/master/docs/app/fonts/icomoon.eot?#iefix-cmq1um') format('embedded-opentype'),
+            url('https://cdn.rawgit.com/angular/material/master/docs/app/fonts/icomoon.woff?-cmq1um') format('woff'),
+            url('https://cdn.rawgit.com/angular/material/master/docs/app/fonts/icomoon.ttf?-cmq1um') format('truetype'),
+            url('https://cdn.rawgit.com/angular/material/master/docs/app/fonts/icomoon.svg?-cmq1um#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
 </head>
 <body layout="column"layout-fill="">
     <script>
@@ -60,6 +80,8 @@
     <script src="src/app/modules/services/userService.js"></script>
     <script src="src/app/modules/services/oauthService.js"></script>
     <script src="src/app/modules/services/pageService.js"></script>
+    <script src="src/app/modules/services/ruleService.js"></script>
+
     <script src="src/app/modules/services/httpRequestInterceptor.js"></script>
 
     <!-- Controllers -->
