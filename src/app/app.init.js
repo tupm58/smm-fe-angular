@@ -7,9 +7,12 @@ angular.module('app').run(
         $rootScope.displayName = $cookies.get('display-name');
         $rootScope.avatarUrl = $cookies.get('avatar-url');
         // $rootScope.pageAccessToken = $cookies.get('page-token');
-        
+
+
+
         $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
             console.log("Step: stateChangeStart");
+           // alert("URL = " + fromState.url)
             $rootScope.isShowOverlay = false;
             $rootScope.showHeader = true;
             var top = $uibModalStack.getTop();
@@ -18,8 +21,15 @@ angular.module('app').run(
                 event.preventDefault();
                 return;
             }
-
+            
             var authToken = $cookies.get('auth-token');
+            if(toState.name.indexOf("verify")==4 && ($cookies.get('verifyID') == null || $cookies.get('verifyID') == ''))
+            {
+                $cookies.put('verifyID',toParams.token);
+                $state.go("app.login");
+                event.preventDefault();
+                return;
+            }
             if (authToken == undefined || authToken == null) {
                 if (toState.name.indexOf("redirect.") == -1
                     && toState.name.indexOf("login") == -1) {

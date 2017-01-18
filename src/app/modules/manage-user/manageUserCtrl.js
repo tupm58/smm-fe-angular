@@ -22,7 +22,6 @@ angular
             pageService.deleteUserWithPage($scope.userList[index]).then(function (response) {
                 if(response.data == "success"){
                     $scope.userList.splice(index, 1);
-                    $scope
                     $scope.showAlert = showAlert('Delete User Successfully');
                 }else{
                     showAlert("Don't Delete This User");

@@ -9,12 +9,7 @@ angular
         $scope.loginFB = loginFB;
         $scope.exchangeToken = exchangeToken;
 
-        $scope.mes = $stateParams.token;
-        // if($scope.mes != null && $scope.mes != '')
-        //     alert($scope.mes);
-        // else
-        //     alert("token empty");
-
+        $scope.mes = $cookies.get('verifyID');
         function initData() {
             // init Facebook login
             (function (d, s, id) {
@@ -77,6 +72,5 @@ angular
             }
             
         }
-
         $scope.initData();
     });
