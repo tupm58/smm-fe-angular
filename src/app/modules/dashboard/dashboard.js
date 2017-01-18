@@ -16,7 +16,7 @@ dashboard.config(['$stateProvider', function ($stateProvider,$scope,$stateParams
                         });
                 }]
             }
-        })
+        }) 
         .state('app.dashboard.page', {
             url: '/page',
             templateUrl: 'src/app/modules/page/page-list.html',
