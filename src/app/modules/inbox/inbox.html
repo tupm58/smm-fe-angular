@@ -1,22 +1,39 @@
-hello, i'm here in inbox :P </br>
-<!--<md-button class="md-primary md-raised" ng-click="getPost()">get post</md-button>-->
+<div class="listPost">
+    <md-content ng-class="{openDetail:expand}" layout="column">
+        <md-list-item ng-repeat = "post in listPost" style="border-bottom: solid 1px #d4d4d4; " ng-click="click(post)" ng-class="{clicked: post.clicked}">
+            <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar" />
+            <div class="md-list-item-text" layout="column">
+                <h4>{{post.message}}</h4>
+                <em>comments: {{post.totalCmt}},  {{post.created_time}}</em>
+            </div>
+        </md-list-item>
+    </md-content>
+</div>
+<div ng-show="expand" class="PostDetail">
+    <div style="border: solid 1px #d4d4d4; padding: 8px;">
+        <p>{{postDetail.message}}</p>
+        <img alt="" ng-src="{{postDetail.full_picture}}" class="img-postPicture img-rounded" />
 
-<md-content ng-class="{openDetail:expand}" layout="column">
-    {{expand}}
-    <md-list-item ng-repeat = "post in listPost" style="border-bottom: solid 1px #d4d4d4; " ng-click="click(post)" ng-class="{clicked: post.clicked}">
-        <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar" />
-        <div class="md-list-item-text" layout="column">
-            <h4>{{post.message}}</h4>
-            <em>comments: {{post.totalCmt}},  {{post.created_time}}</em>
+        <div ng-repeat="data in postDetail.comments.data">
+            <a>{{data.from.name}}</a>
+            <div>{{data.message}}</div>
+            <div ng-repeat="reply in data.comments.data">
+                <a>{{reply.from.name}}</a>
+                {{reply.message}}
+            </div>
+
         </div>
-    </md-list-item>
 
-</md-content>
-<div ng-show="expand">
-    expand: {{expand}} <br>
-    <div>
-        <img alt="" ng-src="{{postDetail.picture}}" class="img-responsive" />
+        <div ng-repeat="">
+
+        </div>
+
+        <div class="form-group">
+            <div class="avaPage">
+                <img alt="avatar page" src="">
+            </div>
+            <textarea class="form-control" rows="3" id="comment"></textarea>
+            <md-button class="md-raised md-primary">Reply</md-button>
+        </div>
     </div>
 </div>
-
-<!--<ui-view ng-show="expand"></ui-view>-->

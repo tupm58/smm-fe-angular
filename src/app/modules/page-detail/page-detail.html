@@ -1,5 +1,31 @@
+<div class="page-menu">
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item  name="page1" md-nav-sref="app.dashboard.page-detail.inbox" md-autofocus>Inbox</md-nav-item>
+        <md-nav-item  name="page2" md-nav-sref="app.dashboard.page-detail.rule-page">Rule page</md-nav-item>
+        <md-nav-item  name="page3" md-nav-sref="app.dashboard.page-detail.manage-user">User</md-nav-item>
+    </md-nav-bar>
+</div>
 
+<!--<div class="page-menu">-->
+        <!--<ul>-->
+            <!--<li ng-class="{active: view.path.match('\/inbox')}">-->
+                <!--<a ui-sref="app.dashboard.page-detail.inbox">Inbox-->
+                    <!--<span class="arrow"></span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a ui-sref="app.dashboard.page-detail.rule-page">Rule Page-->
+                    <!--<span class="arrow"></span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a ui-sref="app.dashboard.page-detail.manage-user">User-->
+                    <!--<span class="arrow"></span>-->
+                <!--</a>-->
+            <!--</li>-->
 
-<div>
+        <!--</ul>-->
+<!--</div>-->
+<div class="pageDetail">
     <ui-view></ui-view>
 </div>

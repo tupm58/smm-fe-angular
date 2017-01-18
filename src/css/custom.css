@@ -48,6 +48,24 @@
     cursor: pointer;
 }
 
+.main-menu {
+    background: #2e2e2e;
+    position: absolute;
+    bottom: 0;
+    padding-top:50px;
+    top: 50px;
+    left: 0;
+    width: 60px;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    z-index: 100;
+    /*-webkit-transition: width .05s linear;*/
+    /*transition: width .05s linear;*/
+    /*-webkit-transform: translateZ(0) scale(1, 1);*/
+    /*z-index: 1000;*/
+    /*margin-top:50px;*/
+}
+
 #googleLoginBtn span.icon {
     background: url('/src/img/google-login-icon.png') transparent 5px 50% no-repeat;
     display: inline-block;
@@ -64,42 +82,10 @@
 }
 
 /*Huyen*/
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-
-@import url(http://fonts.googleapis.com/css?family=Titillium+Web:300);
-.fa-2x {
-    font-size: 2em;
-}
-
-.fa {
-    position: relative;
-    display: table-cell;
-    width: 60px;
-    height: 36px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 20px;
-}
 
 .main-menu:hover, nav.main-menu.expanded {
     width: 250px;
     overflow: visible;
-}
-
-.main-menu {
-    background: #2e2e2e;
-    border-right: 1px solid #e5e5e5;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    width: 60px;
-    overflow: hidden;
-    -webkit-transition: width .05s linear;
-    transition: width .05s linear;
-    -webkit-transform: translateZ(0) scale(1, 1);
-    z-index: 1000;
 }
 
 .main-menu > ul {
@@ -124,7 +110,6 @@
     -webkit-transform: translateZ(0) scale(1, 1);
     -webkit-transition: all .1s linear;
     transition: all .1s linear;
-
 }
 
 .main-menu .nav-icon {
@@ -243,8 +228,95 @@ hr {
 /*open postDetail*/
 .openDetail {
     float: left;
-    width: 50%;
+    width: 40%;
 }
 .clicked {
     background-color: #e5e5e5;
+}
+/*inside postDetail*/
+.avaPage {
+
+}
+.img-postPicture {
+    width: 300px;
+}
+/*buttons and icons*/
+.btn-default {
+    background-color: #B43104;
+    color: #ffffff;
+}
+/*navbar*/
+.navbar {
+    position: absolute;
+    top:0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    background-color: #F2F2F2;
+    z-index:1030;
+}
+/*view 1*/
+.pageDetail {
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+    right: 0;
+    top: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.page-menu {
+    position: absolute;
+    height: 50px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    z-index: 10;
+    background: #e5e5e5;
+    top:50px;
+    left:60px;
+    right: 0;
+}
+.page-menu ul {
+    padding: 0;
+}
+/*.page-menu ul li {*/
+    /*height: 47px;*/
+    /*line-height: 43px;*/
+    /*margin-top: 3px;*/
+    /*cursor: pointer;*/
+    /*display: inline-block;*/
+/*}*/
+/*.page-menu ul li :hover {*/
+    /*background-color: #d5d5d5;*/
+    /*!*border-top: 3px solid #ff4d00;*!*/
+    /*color: #ff4d00;*/
+/*}*/
+.page-menu ul li a {
+    color: #666;
+    display: inline-block;
+    font-family: AllerBold, Arial, Helvetica, sans-serif;
+    min-width: 70px;
+    padding: 0 15px;
+    text-align: center;
+    text-shadow: none;
+    text-transform: uppercase;
+}
+/*list Post and Postdetail*/
+.listPost {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.PostDetail {
+    background-color: #f1f1f1;
+    border-left: 1px solid #e5e5e5;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
 }

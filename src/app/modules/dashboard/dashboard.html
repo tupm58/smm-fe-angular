@@ -1,50 +1,26 @@
-
-<div layout="column" layout-fill="">
-
-    <!-- The outer wrapper - need to set height to px or vh -->
-    <div style="height:700px; overflow:hidden">
-        <md-toolbar md-scroll-shrink="" md-colors="{background: 'grey-100'}">
-            <div class="md-toolbar-tools">
-                <div class="pull-left">
-                    <img src="http://wiki.higgsup.com/wp-content/uploads/2016/06/4.512.png" width="120" height="43">
-                </div>
-                <span flex></span>
-                <md-list>
-                    <md-list-item>
-                        <img ng-src="{{avatarUrl}}" alt="" class="md-avatar">
-                        <h4>
-                            <b>  {{displayName}}</b>
-                        </h4>
-                    </md-list-item>
-                </md-list>
-                <md-button class="md-raised" aria-label="Learn More" ng-click="logout()">
-                    Log out
-                </md-button>
-            </div>
-        </md-toolbar>
-
-        <!-- Content height does not need to be px any more: -->
-        <md-content style="height:100%;" layout="column">
-            <div layout="row">
-                <div flex="5">
-                    <nav class="main-menu">
-                        <li ng-repeat="page in pages">
-                            <a ui-sref="app.dashboard.page-detail.inbox({pageId: {{page.pageId}} })">
-                                <img class="img-responsive img-circle" src="{{page.avatarPageUrl}}" style="padding: 10px 5px;">
-                                <span class="nav-text" style="padding-left: 10px;">{{page.pageName}}</span>
-                            </a>
-                        </li>
-                    </nav>
-                </div>
-                <md-content flex="95">
-                    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-                        <md-nav-item  name="page1" md-nav-sref="app.dashboard.page-detail.inbox">Inbox</md-nav-item>
-                        <md-nav-item  name="page2" md-nav-sref="app.dashboard.page-detail.rule-page">Rule page</md-nav-item>
-                        <md-nav-item  name="page3" md-nav-sref="app.dashboard.page-detail.manage-user">User</md-nav-item>
-                    </md-nav-bar>
-                    <ui-view></ui-view>
-                </md-content>
-            </div>
-        </md-content>
+<!--navbar-->
+<div class="navbar">
+    <div class="container-fluid">
+        <div class="pull-left">
+            <img src="http://wiki.higgsup.com/wp-content/uploads/2016/06/4.512.png" width="120" height="43">
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><img ng-src="{{avatarUrl}}" alt="avatar img" class="img-circle img-responsive"></li>
+            <li><p class="navbar-text">{{displayName}}</p></li>
+            <li style="margin: 7px;">
+                <button type="submit" class="btn btn-default btn-block" ng-click="logout()">Log out</button>
+            </li>
+        </ul>
     </div>
+</div> <!--end navbar-->
+
+<!--container-->
+<div class="main-menu">
+    <li ng-repeat="page in pages">
+        <a ui-sref="app.dashboard.page-detail.inbox({pageId: {{page.pageId}} })">
+            <img class="img-responsive img-rounded" src="{{page.avatarPageUrl}}" style="padding: 10px 10px;">
+            <span class="nav-text" style="padding-left: 10px;">{{page.pageName}}</span>
+        </a>
+    </li>
 </div>
+<ui-view></ui-view>
