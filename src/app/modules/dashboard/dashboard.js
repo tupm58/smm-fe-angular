@@ -15,7 +15,7 @@ dashboard.config(['$stateProvider', function ($stateProvider,$scope,$stateParams
                             return response.data;
                         });
                 }]
-            }
+            } 
         })
         .state('app.dashboard.page', {
             url: '/page',
