@@ -6,7 +6,8 @@ angular.module('app', [
     'ui.router',
     'ui.bootstrap',
     'services',
+    'verify',
     'user',
-    'dashboard'
+    'dashboard',
 ]);
 

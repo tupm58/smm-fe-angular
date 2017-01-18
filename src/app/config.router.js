@@ -11,7 +11,7 @@ angular.module('app')
 )
     .config(
     ['$stateProvider', '$urlRouterProvider',
-        function ($stateProvider, $urlRouterProvider) {
+        function ($stateProvider, $urlRouterProvider, $stateParams) {
             $urlRouterProvider
                 .otherwise('/app');
             $stateProvider
@@ -20,6 +20,8 @@ angular.module('app')
                     templateUrl: 'src/app/app.html',
                     controller: 'appCtrl'
                 })
+
         }
     ]
-);
+)
+;

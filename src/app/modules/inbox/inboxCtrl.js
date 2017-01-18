@@ -17,6 +17,8 @@ angular
             console.log(page_token);
             getPost(page_token);
         }
+
+        
         init();
         
         function getPost(page_token){

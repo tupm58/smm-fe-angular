@@ -16,7 +16,7 @@ dashboard.config(['$stateProvider', function ($stateProvider,$scope,$stateParams
                         });
                 }]
             }
-        })
+        }) 
         .state('app.dashboard.page', {
             url: '/page',
             templateUrl: 'src/app/modules/page/page-list.html',
@@ -31,7 +31,9 @@ dashboard.config(['$stateProvider', function ($stateProvider,$scope,$stateParams
                     return pageService.getPageDetail($stateParams.pageId)
                         .then(function (response) {
                             return response.data;
-                        });
+                        }, function (error) {
+                            console.log(error);
+                        })
                 }]
             }
         })
