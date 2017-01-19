@@ -12,7 +12,7 @@
         
         function checkToken(userId, token) {
             return $http({
-                url : config.basicUrl + 'verifyUser/'+ userId + "/" + token,
+                url : config.basicUrl + 'verify/'+ userId + "/" + token,
                 method : 'POST',
                // data : opts
             })

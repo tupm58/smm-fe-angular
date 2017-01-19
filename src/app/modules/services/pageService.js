@@ -41,26 +41,24 @@
             })
         }
 
-        function getAllUserWithPage(opts) {
+        function getAllUserWithPage() {
             return $http({
-                url : config.basicUrl + "users/" + opts,
-                method : 'POST'
+                url : config.basicUrl + "user",
+                method : 'GET'
             })
         }
 
         function deleteUserWithPage(opts) {
             return $http({
-                url : config.basicUrl + "deleteUser",
-                method : 'POST',
-                data : opts
+                url : config.basicUrl + "user/" + opts,
+                method : 'DELETE'
             })
         }
 
         function editRole(opts) {
             return $http({
-                url: config.basicUrl + "updateRole",
-                method : 'POST',
-                data : opts
+                url: config.basicUrl + "user/" + opts + "/role",
+                method : 'PUT'
             })
         }
 
