@@ -4,15 +4,6 @@ angular
     .module('verify')
     .controller('verifyCtrl', function ($scope, $rootScope,$cookies,oauthService, verifyService ) {
         console.log('inside dashboard controller');
-        // $scope.message = {};
-        // $scope.result = initialVerify;
-        // if($scope.result == 'success'){
-        //     $scope.message = "YOU VERIFIED SUCCESSFULLY";
-        // }else{
-        //     $scope.message = "VERIFY FAIL";
-        // }
-        
-        
         $scope.message = {};
         $scope.param = $cookies.get('verifyID');
         $cookies.remove('verifyID');

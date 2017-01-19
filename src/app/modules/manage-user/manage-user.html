@@ -13,101 +13,99 @@
                 <td align="center">{{user.name}}</td>
                 <td align="center">{{user.role}}</td>
                 <td colspan="2" align="center">
-                    <md-button class="md-primary md-raised" ng-click="editRole($event, user)">Edit Role</md-button> <md-button class="md-primary md-raised" ng-click="deleteUser($index)">Delete</md-button>
+                    <md-button class="md-primary md-raised" ng-click="editRole($event, user)">Edit Role</md-button>
+                    <md-button class="md-primary md-raised" ng-click="deleteUser($index)">Delete</md-button>
                 </td>
-                <!--<td>-->
-                    <!---->
-                <!--</td>-->
-            <!--</tr>-->
+                <!-- ########################################################################################## -->
+                <script type="text/ng-template" id="invite-user.html">
+                    <md-dialog>
+                        <form ng-cloak ng-submit="answer(email+'-'+ role)">
+                            <md-toolbar>
+                                <div class="md-toolbar-tools">
+                                    <h2 align="center">INVITE USER</h2>
+                                    <span flex></span>
+                                    <md-button class="md-icon-button" ng-click="cancel()">
+                                    </md-button>
+                                </div>
+                            </md-toolbar>
 
-        <!--</table>-->
+                            <!--<form name="projectForm">-->
+                                <md-dialog-content>
+                                    <div class="md-dialog-content">
 
-        <!-- ########################################################################################## -->
-        <script type="text/ng-template" id="invite-user.html">
-            <md-dialog>
-                <!--aria-label="Mango (Fruit)" -->
-                <form ng-cloak>
-                    <md-toolbar>
-                        <div class="md-toolbar-tools">
-                            <h2 align="center">INVITE USER</h2>
-                            <span flex></span>
-                            <md-button class="md-icon-button" ng-click="cancel()">
-                                <!--<md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>-->
-                            </md-button>
-                        </div>
-                    </md-toolbar>
+                                        <label for="email">Email</label>
+                                        <input type="email" required ng-model="email" id="email"
+                                               style="width: 200px; height: 28px"/>
 
-                    <form >
-                    <md-dialog-content>
-                        <div class="md-dialog-content">
-
-                            <label for="email">Email</label>
-                            <input type="text" ng-model="email" id="email" />
-                            <label for="role">ROLE</label>
-                            <select ng-model="role" id="role">
-                                <option value="ADMIN">ADMIN</option>
-                                <option value="MODERATOR">MODERATOR</option>
-                            </select>
-                        </div>
-                    </md-dialog-content>
-
-                    <md-dialog-actions layout="row">
-                        <span flex></span>
-                        <md-button ng-click="answer(email+'-'+ role)">
-                            Submit
-                        </md-button>
-                    </md-dialog-actions>
-                        </form>
-                </form>
-            </md-dialog>
-        </script>
-
-
-        <!-- ################################################################################################### -->
-        <script type="text/ng-template" id="edit-role.html">
-            <md-dialog>
-                <form ng-cloak>
-                    <md-toolbar>
-                        <div class="md-toolbar-tools">
-                            <h2 align="center">EDIT ROLE</h2>
-                            <span flex></span>
-                            <md-button class="md-icon-button" ng-click="cancel()">
-                                <!--<md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>-->
-                            </md-button>
-                        </div>
-                    </md-toolbar>
-
-                    <md-dialog-content>
-                        <div class="md-dialog-content">
-                            <table>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>
-                                        ROLE
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>{{modal.editUser.name}}</td>
-                                    <td>
-                                        <select ng-model="customRole">
-                                            <option value="ADMIN">ADMIN</option>
+                                        <br/><br/>
+                                        <label for="role">Role</label>
+                                        <select ng-model="role" id="role"
+                                                style="width: 200px;margin-left: 6px; height: 28px">
+                                            <option  value="ADMIN" selected>ADMIN</option>
                                             <option value="MODERATOR">MODERATOR</option>
                                         </select>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </md-dialog-content>
+                                    </div>
+                                </md-dialog-content>
 
-                    <md-dialog-actions layout="row">
-                        <span flex></span>
-                        <md-button ng-click="answer(customRole)">
-                            Submit
-                        </md-button>
-                    </md-dialog-actions>
-                </form>
-            </md-dialog>
-        </script>
+                                <md-dialog-actions layout="row">
+                                    <span flex></span>
+                                    <button type="submit" class="md-warn md-raised md-hue-2 md-button md-ink-ripple"
+                                             style="left: -16px;">
+                                        Submit
+                                    </button>
+                                </md-dialog-actions>
+                            <!--</form>-->
+                        </form>
+                    </md-dialog>
+                </script>
+
+
+                <!-- ################################################################################################### -->
+                <script type="text/ng-template" id="edit-role.html">
+                    <md-dialog>
+                        <form ng-cloak>
+                            <md-toolbar>
+                                <div class="md-toolbar-tools">
+                                    <h2 align="center">EDIT ROLE</h2>
+                                    <span flex></span>
+                                    <md-button class="md-icon-button" ng-click="cancel()">
+                                        <!--<md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>-->
+                                    </md-button>
+                                </div>
+                            </md-toolbar>
+
+                            <md-dialog-content>
+                                <div class="md-dialog-content">
+                                    <table>
+                                        <tr>
+                                            <td style="width: 115px">Name</td>
+                                            <td>
+                                                ROLE
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{modal.editUser.name}}</td>
+                                            <td>
+                                                <select ng-model="customRole" style="width: 187px; height: 28px">
+                                                    <option value="ADMIN">ADMIN</option>
+                                                    <option value="MODERATOR">MODERATOR</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </md-dialog-content>
+
+                            <md-dialog-actions layout="row">
+                                <span flex></span>
+                                <md-button class="md-warn md-raised md-hue-2 md-button md-ink-ripple"
+                                           ng-click="answer(customRole)" style="left: -14px;">
+                                    Submit
+                                </md-button>
+                            </md-dialog-actions>
+                        </form>
+                    </md-dialog>
+                </script>
     </div>
 
 </div>

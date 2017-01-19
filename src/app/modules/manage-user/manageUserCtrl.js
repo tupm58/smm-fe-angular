@@ -67,6 +67,7 @@ angular
             vm.editUser = {};
             vm.editUser = editUser;
 
+
             $scope.hide = function() {
                 $mdDialog.hide();
             };
