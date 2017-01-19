@@ -67,6 +67,9 @@ angular
             vm.editUser = {};
             vm.editUser = editUser;
 
+            $scope.values = [{"role":"ADMIN"},{"role":"MODERATOR"}];
+            $scope.role = "ADMIN";
+
 
             $scope.hide = function() {
                 $mdDialog.hide();
@@ -111,6 +114,8 @@ angular
 
         function InviteCtrl($scope, $mdDialog) {
 
+            $scope.values = [{"role":"ADMIN"},{"role":"MODERATOR"}];
+            $scope.role = "ADMIN";
             $scope.hide = function() {
                 $mdDialog.hide();
             };
