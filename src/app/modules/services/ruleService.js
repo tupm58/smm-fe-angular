@@ -16,24 +16,36 @@
         return {
             getRule: getRule,
             addRule: addRule,
+            editRule: editRule,
             deleteRule: deleteRule
         };
         function getRule(pageId) {
-            return $http ({
+            return $http({
                 url: config.basicUrl + "rule/page/" + pageId,
                 method: 'GET'
             })
         }
-        function addRule(opts){
+
+        function editRule(ruleId, opts) {
             return $http({
-                url:  config.basicUrl + "rule",
+                url: config.basicUrl + "rule/" + ruleId,
+                method: 'PUT',
+                data: opts
+            })
+        }
+
+        function addRule(opts) {
+            return $http({
+                url: config.basicUrl + "rule",
                 method: 'POST',
                 data: opts
             });
         }
-        function deleteRule(rule){
+
+
+        function deleteRule(rule) {
             return $http({
-                url:  config.basicUrl + "/delete/rule/" + rule.ruleId,
+                url: config.basicUrl + "/delete/rule/" + rule.ruleId,
                 method: 'DELETE'
             })
         }

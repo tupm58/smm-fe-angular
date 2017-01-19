@@ -78,7 +78,60 @@ angular
                     })
             })
         }
+        $scope.editRule = function(event){
+            console.log($scope.ruleName);
+            $mdDialog.show({
+                controller: function ($timeout, $q, $scope, $mdDialog) {
+                    $scope.cancel = function(event) {
+                        $mdDialog.cancel();
+                    };
+                    $scope.finish = function(event) {
+                        $mdDialog.hide();
+                    };
+                    $scope.answer = function(answer) {
+                        //pass quest to hide function.
+                        $mdDialog.hide(answer);
+                    };
+                    $scope.loadUsers = function() {
+                        // Use timeout to simulate a 650ms request.
+                        return $timeout(function() {
+                            $scope.users =  $scope.users  || [
+                                    { id: 1, name: 'Scooby Doo' },
+                                    { id: 2, name: 'Shaggy Rodgers' },
+                                    { id: 3, name: 'Fred Jones' },
+                                    { id: 4, name: 'Daphne Blake' },
+                                    { id: 5, name: 'Velma Dinkley' }
+                                ];
 
+                        }, 650);
+                    };
+                },
+                templateUrl: 'edit-rule.html',
+                parent: angular.element(document.body),
+                bindToController: true,
+                controllerAs: 'modal',
+                targetEvent: event,
+                clickOutsideToClose:true,
+                fullscreen: $scope.customFullscreen,
+                locals: {
+                    users: $scope.users
+                }
+            }).then(function(answer){
+                var request = {
+                    pageId : $scope.pageId,
+                    ruleId: answer.ruleId,
+                    ruleName: answer.ruleName,
+                    ruleWords: answer.ruleWords
+                };
+                console.log(request);
+                ruleService.editRule(request)
+                    .then(function(response){
+                        console.log(response.data)
+                        console.log("edit rule success");
+                        $scope.rules.push(response.data);
+                    })
+            })
+        }
         $scope.showDelete = function(event,answer){
             console.log(answer.ruleId);
             var confirm = $mdDialog.confirm()
