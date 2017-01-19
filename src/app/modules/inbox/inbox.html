@@ -2,7 +2,7 @@
     <md-content ng-class="{openDetail:expand}" layout="column">
         <md-list-item ng-repeat = "post in listPost" style="border-bottom: solid 1px #d4d4d4;" ng-click="getComments(post)"
                       ng-class="{itemSelected: post.clicked}">
-            <img src="{{avatarPageUrl}}" class="md-avatar">
+            <img ng-src="{{avatarPageUrl}}" class="md-avatar">
             <div class="md-list-item-text" layout="column">
                 <b>{{ post.message| limitTo: 100 }}{{post.message.length > 100 ? '...' : ''}}</b>
                 <b>{{post.story}}</b>
@@ -11,6 +11,27 @@
         </md-list-item>
     </md-content>
 </div>
+
+<!--<div class="listPost">-->
+    <!--<table>-->
+        <!--<tbody>-->
+            <!--<tr ng-repeat = "post in listPost">-->
+                <!--<td>-->
+                    <!--<div class="list-item-wrapper">-->
+                        <!--<img alt="avaPage" src="{{avatarPageUrl}}" >-->
+                        <!--<article>-->
+                            <!--<b>{{ post.message| limitTo: 100 }}{{post.message.length > 100 ? '...' : ''}}</b>-->
+                            <!--<footer>-->
+                                <!--<i class="icon-comments-alt"></i> {{post.totalCmt}}, {{post.created_time}}-->
+                            <!--</footer>-->
+                        <!--</article>-->
+                    <!--</div>-->
+                <!--</td>-->
+            <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+<!--</div>-->
+
 <div ng-show="expand" class="PostDetail">
     <div style=" padding: 15px;">
         <!--huyen-->
