@@ -2,9 +2,9 @@
 
 angular
     .module('verify')
-    .controller('verifyCtrl', function ($scope, $rootScope,$cookies,oauthService, verifyService ) {
+    .controller('verifyCtrl', function ($state, $scope, $rootScope,$cookies,oauthService, verifyService ) {
         console.log('inside dashboard controller');
-        $scope.message = {};
+        $scope.result = {};
         $scope.param = $cookies.get('verifyID');
         $cookies.remove('verifyID');
         $scope.userId = $cookies.get('user-id');
@@ -13,10 +13,14 @@ angular
             
             if(result == 'success'){
 
-                $scope.message = "YOU VERIFIED SUCCESSFULLY";
+                $scope.result.message = "YOU VERIFIED SUCCESSFULLY";
             }else{
-                $scope.message = "VERIFY FAIL";
+                $scope.result.message = "VERIFY FAIL";
             }
         })
+
+        $scope.returnDashboard = function () {
+            $state.go("app.dashboard");
+        }
         
     });
