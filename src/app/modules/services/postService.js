@@ -11,10 +11,14 @@
     function postService($rootScope, $http, $cookies, $q, $location, $state) {
 
         return {
-            getPost : getPost
+            // getPost : getPost,
+            getComments: getComments
         };
-        function getPost(){
-            
+        function getComments(postId) {
+            return $http({
+                url: config.basicUrl + "post/" + postId,
+                method: 'GET'
+            })
         }
     }
 })();

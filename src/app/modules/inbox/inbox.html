@@ -1,37 +1,96 @@
 <div class="listPost">
     <md-content ng-class="{openDetail:expand}" layout="column">
-        <md-list-item ng-repeat = "post in listPost" style="border-bottom: solid 1px #d4d4d4; " ng-click="click(post)" ng-class="{clicked: post.clicked}">
-            <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar" />
+        <md-list-item ng-repeat = "post in listPost" style="border-bottom: solid 1px #d4d4d4;" ng-click="getComments(post)"
+                      ng-class="{itemSelected: post.clicked}">
+            <img src="{{avatarPageUrl}}" class="md-avatar">
             <div class="md-list-item-text" layout="column">
-                <h4>{{post.message}}</h4>
+                <b>{{ post.message| limitTo: 100 }}{{post.message.length > 100 ? '...' : ''}}</b>
+                <b>{{post.story}}</b>
                 <em>comments: {{post.totalCmt}},  {{post.created_time}}</em>
             </div>
         </md-list-item>
     </md-content>
 </div>
 <div ng-show="expand" class="PostDetail">
-    <div style="border: solid 1px #d4d4d4; padding: 8px;">
+    <div style=" padding: 15px;">
+        <!--huyen-->
+        <img src="{{avatarPageUrl}}">
+        <span>{{pageName}}</span>
+        <br>
         <p>{{postDetail.message}}</p>
-        <img alt="" ng-src="{{postDetail.full_picture}}" class="img-postPicture img-rounded" />
-
-        <div ng-repeat="data in postDetail.comments.data">
-            <a>{{data.from.name}}</a>
-            <div>{{data.message}}</div>
-            <div ng-repeat="reply in data.comments.data">
-                <a>{{reply.from.name}}</a>
-                {{reply.message}}
+        <div class="img-postWrapper" ng-show="postDetail.full_picture != null">
+            <img alt="" ng-src="{{postDetail.full_picture}}" class="img-postInner img-rounded img-responsive"/>
+        </div>
+        <!--lan-->
+        <md-list-item ng-repeat="data in postDetail.comments.data" style="border-bottom: solid 2px #d4d4d4; ">
+            <div class="md-list-item-text" layout="column" style="width: 100%">
+                <div layout="row" style="width: 100%">
+                    <div flex="10">
+                        <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar"/>
+                    </div>
+                    <div flex="90">
+                        <a>{{data.from.name}}</a>
+                        <br/>{{data.message}}
+                        <div class="mainDetailNav navBar">
+                            <div class="post-view-nav">
+                                <div class="pull-left">
+                                    <div class="btn-toolbar">
+                                        <div class="btn-group">
+                                            <button class="btn-item">
+                                                <i class="icon-ok"></i>REVIEW
+                                            </button>
+                                            <button class="btn-item">
+                                                <i class="icon-ban-circle"></i>HIDE
+                                            </button>
+                                            <button class="btn-item">
+                                                <i class="icon-remove"></i>REMOVE
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <md-list-item ng-repeat="reply in data.comments.data" ng-click="getComments(post)">
+                    <div layout="row" style="width: 100%">
+                        <div flex="10">
+                        </div>
+                        <div flex="10">
+                            <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar"/>
+                        </div>
+                        <div flex="80">
+                            <a>{{reply.from.name}}</a>
+                            <br/>{{reply.message}}
+                            <div class="mainDetailNav navBar">
+                                <div class="post-view-nav">
+                                    <div class="pull-left">
+                                        <div class="btn-toolbar">
+                                            <div class="btn-group">
+                                                <button class="btn-item">
+                                                    <i class="icon-ok"></i>REVIEW
+                                                </button>
+                                                <button class="btn-item">
+                                                    <i class="icon-ban-circle"></i>HIDE
+                                                </button>
+                                                <button class="btn-item">
+                                                    <i class="icon-remove"></i>REMOVE
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </md-list-item>
             </div>
-
-        </div>
-
-        <div ng-repeat="">
-
-        </div>
+        </md-list-item>
 
         <div class="form-group">
-            <div class="avaPage">
-                <img alt="avatar page" src="">
-            </div>
+            <!--<div class="avaPage">-->
+                <!--<img alt="avatar page" src="">-->
+            <!--</div>-->
             <textarea class="form-control" rows="3" id="comment"></textarea>
             <md-button class="md-raised md-primary">Reply</md-button>
         </div>
