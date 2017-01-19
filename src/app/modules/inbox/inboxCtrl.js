@@ -5,7 +5,7 @@
 
 angular
     .module('dashboard')
-    .controller('inboxCtrl', function ($scope, $rootScope, pageService, $stateParams, postService) {
+    .controller('inboxCtrl', function ($scope, $rootScope, pageService, $stateParams) {
         console.log('inside inbox controller');
         $scope.pageId = $stateParams.pageId;
         $scope.pageName = $rootScope.pageName;
@@ -22,14 +22,15 @@ angular
         init();
 
         function getPost(page_token) {
+            console.log(page_token);
             FB.api(
-                "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
+                "me?fields=posts{comments{comment_count},message,created_time,story}&access_token=" + page_token,
                 function (response) {
                     if (response && !response.error) {
-                        console.log(response.feed.data);
-                        var feed = response.feed.data;
+                        console.log(response.posts.data);
+                        var feed = response.posts.data;
                         for (var i = 0; i < feed.length; i++) {
-                            var count = 0;
+                            var count = 0;  
                             if (feed[i].comments) {
                                 var count_comment = 0;
                                 for (var j = 0; j < feed[i].comments.data.length; j++) {
@@ -43,6 +44,7 @@ angular
                             }
                             var post = {
                                 message: feed[i].message,
+                                story: feed[i].story,
                                 created_time: feed[i].created_time,
                                 totalCmt: count,
                                 postId: feed[i].id,
@@ -62,24 +64,24 @@ angular
         $scope.Comments = [];
         $scope.getComments = function (post) {
             FB.api(
-                post.postId + "?fields=message,full_picture,type,actions,permalink_url,comments{from,message,comments{message,from}}&access_token=" + $rootScope.pageAccessToken,
+                post.postId + "?fields=message,full_picture,actions,comments{from,message,comments{message,from}}&access_token=" + $rootScope.pageAccessToken,
                 function (response) {
                     if (response && !response.error) {
                         $scope.postDetail = response;
-                        console.log(response);
                     }
                 }
             );
 
-            postService.getComments(post.postId)
-                .then(function (response) {
-                    $scope.Comments = response.data.comments;
-                    console.log($scope.Comments);
-                });
+            // postService.getComments(post.postId)
+            //     .then(function (response) {
+            //         $scope.Comments = response;
+            //         console.log(response);
+            //     });
 
             angular.forEach($scope.listPost, function (i) {
                 if (i === post) {
                     i.clicked = !i.clicked;
+                    // console.log(i.clicked);
                     $scope.expand = i.clicked;
                 }
                 else {
@@ -87,15 +89,5 @@ angular
                 }
             });
         }
-        $scope.deleteComment = function () {
-            postService.deleteComment();
-        };
-        $scope.hideComment = function () {
-            postService.hideComment();
-        }
 
-        $scope.assignComment = function () {
-            postService.assignComment();
-        }
-
-    })
+    });

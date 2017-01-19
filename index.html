@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
     <link rel="stylesheet" href="src/css/custom.css">
-    <!--<link rel="stylesheet" href="src/css/jquery.nestable.css">-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--<link rel="stylesheet" href="src/css/css.css">-->
 </head>
-<body layout="column" layout-fill="">
+<body>
     <script>
         window.fbAsyncInit = function() {
             FB.init({
@@ -34,7 +33,7 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <div id="app" ui-view layout="column"></div>
+    <div id="app" ui-view></div>
 
     <script src="https://apis.google.com/js/platform.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -47,7 +46,7 @@
     <script src="/bower_components/angular-aria/angular-aria.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-material/angular-material.js"></script>
-
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- App -->
     <script src="src/app/app.js"></script>
     <script src="src/app/config.router.js"></script>

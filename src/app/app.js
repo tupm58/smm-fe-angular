@@ -9,5 +9,6 @@ angular.module('app', [
     'verify',
     'user',
     'dashboard',
+    'angular-loading-bar'
 ]);
 

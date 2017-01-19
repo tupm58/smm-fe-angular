@@ -4,7 +4,7 @@
 'use strict';
 angular
     .module('dashboard')
-    .controller('pageCtrl', function ($scope, $rootScope,$location, $cookies,pageService) {
+    .controller('pageCtrl', function (cfpLoadingBar,$scope, $rootScope,$location, $cookies,pageService) {
         console.log('inside page list controller');
 
         $scope.pages = [];
@@ -17,6 +17,7 @@ angular
         init();
 
         function getPage() {
+            cfpLoadingBar.start();
             FB.api (
                 "/me/accounts?fields=picture,name,id,access_token&access_token=" + $cookies.get('auth-token'),
                 function (response) {
@@ -25,6 +26,7 @@ angular
                         for (var i=0; i<response.data.length;i++) {
                             $scope.pages.push(response.data[i]);
                         }
+                        cfpLoadingBar.complete();
                     }
                 }
             );
