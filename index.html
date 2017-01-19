@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="src/css/custom.css">
+    <link rel="stylesheet" href="src/css/jquery.nestable.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/css.css">
 </head>
 <body layout="column"layout-fill="">
     <script>
@@ -31,7 +34,8 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <div id="app" ui-view layout="column"></div>
+    <div id="app" ui-view layout="column">
+    </div>
 
     <script src="https://apis.google.com/js/platform.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -61,6 +65,8 @@
     <script src="src/app/modules/services/oauthService.js"></script>
     <script src="src/app/modules/services/pageService.js"></script>
     <script src="src/app/modules/services/httpRequestInterceptor.js"></script>
+    <script src="src/app/modules/services/postService.js"></script>
+
 
     <!-- Controllers -->
     <script src="src/app/modules/user/loginCtrl.js"></script>

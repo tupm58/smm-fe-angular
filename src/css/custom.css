@@ -245,6 +245,22 @@ hr {
     float: left;
     width: 50%;
 }
+
 .clicked {
     background-color: #e5e5e5;
+}
+
+div.btn-group {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+button.btn-item {
+    font-size: 11px;
+    background-color: #ffffff;
+    padding-right: 12px;
+    border: none;
+}
+div.pull-left{
+
 }
