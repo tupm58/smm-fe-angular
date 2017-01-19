@@ -59,5 +59,10 @@ dashboard.config(['$stateProvider', function ($stateProvider,$scope,$stateParams
             url: '/manage-user',
             templateUrl: 'src/app/modules/manage-user/manage-user.html',
             controller: 'manageUserCtrl'
-        })
+        });
+        // .state('app.dashboard.page-detail.inbox.postDetail', {
+        //     url: '/postDetail',
+        //     templateUrl: 'src/app/modules/postDetail/postDetail.html',
+        //     controller: 'inboxCtrl'
+        // })
 }]);

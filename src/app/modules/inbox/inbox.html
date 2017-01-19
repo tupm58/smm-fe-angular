@@ -1,10 +1,97 @@
-hello, i'm here in inbox :P </br>
-<!--<md-button class="md-primary md-raised" ng-click="getPost()">get post</md-button>-->
-
-    <md-list-item ng-repeat = "post in listPost" ng-click="null" flex="90" style="border: solid 1px #d4d4d4;">
-        <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar" />
+<md-content ng-class="{openDetail:expand}" layout="column" style="border-bottom: 1px solid black;">
+    <md-list-item ng-repeat="post in listPost" style="border-bottom: solid 2px #d4d4d4; " ng-click="getComments(post)">
+        <img ng-src="{{avatarPageUrl}}" class="md-avatar" alt="avatar"/>
         <div class="md-list-item-text" layout="column">
             <h4>{{post.message}}</h4>
-            <em>comments: {{post.totalCmt}},  {{post.created_time}}</em>
+            <em>comments: {{post.totalCmt}}, {{post.created_time}}</em>
         </div>
     </md-list-item>
+
+</md-content>
+
+<div ng-show="expand">
+    <div style="margin-left: 10px">
+        <div layout="row">
+            <div flex="10">
+                <img alt="" ng-src="{{avatarPageUrl}}">
+            </div>
+            <div flex="90">
+                <a href="#">{{pageName}}</a>
+                <p>{{postDetail.message}}</p>
+                <img src="{{postDetail.full_picture}}">
+            </div>
+        </div>
+        <md-list-item ng-repeat="cmt in Comments.data" style="border-bottom: solid 1px #d4d4d4;  ">
+            <div class="md-list-item-text" layout="column" style="width: 100%">
+                <div layout="row" style="width: 100%">
+                    <div flex="10">
+                        <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar"/>
+                    </div>
+                    <div flex="90" layout="column">
+                        <!--<div flex="20"><a>{{data.from.name}}</a></div>-->
+                        <div flex="50">{{cmt.message}}</div>
+                        <div class="mainDetailNav navBar" flex="30">
+                            <div class="post-view-nav">
+                                <div class="pull-left">
+                                    <div class="btn-toolbar">
+                                        <div class="btn-group">
+                                            <button class="btn-item">
+                                                <i class="icon-ok"></i>REVIEW
+                                            </button>
+                                            <button class="btn-item" ng-click="assignComment()">
+                                                <i class="icon-ok"></i>ASSIGN
+                                            </button>
+                                            <button class="btn-item">
+                                                <i class="icon-ban-circle" ng-click="hideComment()"></i>HIDE
+                                            </button>
+                                            <button class="btn-item" ng-click="deleteComment()">
+                                                <i class="icon-remove"></i>REMOVE
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <md-list-item ng-repeat="reply in cmt.comments.data" ng-click="getComments(post)">
+                    <div layout="row" style="width: 100%">
+                        <div flex="10">
+                        </div>
+                        <div flex="10">
+                            <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar"/>
+                        </div>
+                        <div flex="80">
+                            <!--<a>{{reply.from.name}}</a>-->
+                            <br/>{{reply.message}}
+                            <div class="mainDetailNav navBar">
+                                <div class="post-view-nav">
+                                    <div class="pull-left">
+                                        <div class="btn-toolbar">
+                                            <div class="btn-group">
+                                                <button class="btn-item" ng-click="">
+                                                    <i class="icon-ok"></i>REVIEW
+                                                </button>
+                                                <button class="btn-item" ng-click="assignComment()">
+                                                    <i class="icon-ok"></i>ASSIGN
+                                                </button>
+                                                <button class="btn-item" ng-click="hideComment()">
+                                                    <i class="icon-ban-circle"></i>HIDE
+                                                </button>
+                                                <button class="btn-item">
+                                                    <i class="icon-remove" ng-click="deleteComment()"></i>REMOVE
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </md-list-item>
+            </div>
+        </md-list-item>
+    </div>
+
+</div>

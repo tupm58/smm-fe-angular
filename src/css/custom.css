@@ -239,17 +239,28 @@ hr {
     width: 980px;
 }
 
-input[type=search] {
-    width: 130px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('../img/search-icon.png');
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
+/*custom lai angular material*/
+/*open postDetail*/
+.openDetail {
+    float: left;
+    width: 50%;
+}
 
+.clicked {
+    background-color: #e5e5e5;
+}
+
+div.btn-group {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+button.btn-item {
+    font-size: 11px;
+    background-color: #ffffff;
+    padding-right: 12px;
+    border: none;
+}
+div.pull-left{
 
 }

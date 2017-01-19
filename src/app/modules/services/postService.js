@@ -11,10 +11,35 @@
     function postService($rootScope, $http, $cookies, $q, $location, $state) {
 
         return {
-            getPost : getPost
+            // getPost : getPost
+            getComments: getComments,
+            deleteComment : deleteComment,
+            hideComment: hideComment,
+            assignComment: assignComment
         };
-        function getPost(){
-            
+        function getComments(postId) {
+            return $http({
+                url: config.basicUrl + "comment/api/" + postId ,
+                method: 'GET'
+            })
+        }
+        function deleteComment() {
+            return $http({
+                url: config.basicUrl + "comment/api/" + postId ,
+                method: 'GET'
+            })
+        }
+        function hideComment() {
+            return $http({
+                url: config.basicUrl + "comment/api/" + postId ,
+                method: 'GET'
+            })
+        }
+        function assignComment() {
+            return $http({
+                url: config.basicUrl + "comment/api/" + postId ,
+                method: 'GET'
+            })
         }
     }
 })();

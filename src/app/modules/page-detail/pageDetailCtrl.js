@@ -10,6 +10,8 @@ angular
         $scope.pageId = $stateParams.pageId;
 
         $rootScope.pageAccessToken = initialPageDetailData.accessToken;
-  
+        $rootScope.pageName = initialPageDetailData.pageName;
+        $rootScope.avatarPageUrl = initialPageDetailData.avatarPageUrl;
+       
         
     });
