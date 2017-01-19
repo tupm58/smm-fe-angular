@@ -11,6 +11,7 @@
     function postService($rootScope, $http, $cookies, $q, $location, $state) {
 
         return {
+
             // getPost : getPost
             getComments: getComments,
             deleteComment : deleteComment,
@@ -37,9 +38,17 @@
         }
         function assignComment() {
             return $http({
-                url: config.basicUrl + "comment/api/" + postId ,
-                method: 'GET'
+                url: config.basicUrl + "comment/api/" + postId,
+
+                // getPost : getPost,
+                getComments: getComments
             })
         }
+        // function getComments(postId) {
+        //     return $http({
+        //         url: config.basicUrl + "post/" + postId,
+        //         method: 'GET'
+        //     })
+        // }
     }
-})();
+    })();

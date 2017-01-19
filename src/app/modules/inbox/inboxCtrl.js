@@ -5,7 +5,7 @@
 
 angular
     .module('dashboard')
-    .controller('inboxCtrl', function ($scope, $rootScope, pageService, $stateParams) {
+    .controller('inboxCtrl', function ($scope, $rootScope, pageService, $stateParams, postService) {
         console.log('inside inbox controller');
         $scope.pageId = $stateParams.pageId;
         $scope.pageName = $rootScope.pageName;
@@ -64,7 +64,7 @@ angular
         $scope.Comments = [];
         $scope.getComments = function (post) {
             FB.api(
-                post.postId + "?fields=message,full_picture,actions,comments{from,message,comments{message,from}}&access_token=" + $rootScope.pageAccessToken,
+                post.postId + "?fields=message,full_picture,type,actions,permalink_url,comments{from,message,comments{message,from}}&access_token=" + $rootScope.pageAccessToken,
                 function (response) {
                     if (response && !response.error) {
                         $scope.postDetail = response;
@@ -72,11 +72,11 @@ angular
                 }
             );
 
-            // postService.getComments(post.postId)
-            //     .then(function (response) {
-            //         $scope.Comments = response;
-            //         console.log(response);
-            //     });
+            postService.getComments(post.postId)
+                .then(function (response) {
+                    $scope.Comments = response.data.comments;
+                    console.log($scope.Comments);
+                });
 
             angular.forEach($scope.listPost, function (i) {
                 if (i === post) {
@@ -88,6 +88,16 @@ angular
                     i.clicked = false;
                 }
             });
+        };
+        $scope.deleteComment = function () {
+            postService.deleteComment();
+        };
+        $scope.hideComment = function () {
+            postService.hideComment();
+        };
+
+        $scope.assignComment = function () {
+            postService.assignComment();
         }
 
     });

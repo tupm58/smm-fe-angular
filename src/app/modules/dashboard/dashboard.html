@@ -20,7 +20,7 @@
     <li ng-repeat="page in pages" ui-sref-active="navActive">
     <!--<li ng-repeat="page in pages" ng-class="{'active': page.path == path}">-->
         <a ui-sref="app.dashboard.page-detail.inbox({pageId: {{page.pageId}} })">
-            <img class="img-responsive img-rounded" src="{{page.avatarPageUrl}}" style="padding: 10px 10px;">
+            <img class="img-responsive img-rounded" ng-src="{{page.avatarPageUrl}}" style="padding: 10px 10px;">
             <span class="nav-text" style="padding-left: 10px;">{{page.pageName}}</span>
         </a>
     </li>
