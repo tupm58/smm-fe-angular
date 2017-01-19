@@ -45,7 +45,15 @@ dashboard.config(['$stateProvider', function ($stateProvider,$scope,$stateParams
         .state('app.dashboard.page-detail.rule-page', {
             url: '/rule-page',
             templateUrl: 'src/app/modules/rule-page/rule-page.html',
-            controller: 'rulePageCtrl'
+            controller: 'rulePageCtrl',
+            resolve:{
+                initialRuleData: ['ruleService','$stateParams', function (ruleService,$stateParams) {
+                    return ruleService.getRule($stateParams.pageId)
+                        .then(function (response) {
+                            return response.data;
+                        });
+                }]
+            }
         })
         .state('app.dashboard.page-detail.manage-user', {
             url: '/manage-user',
