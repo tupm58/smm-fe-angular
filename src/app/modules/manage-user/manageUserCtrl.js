@@ -14,12 +14,12 @@ angular
         
         $scope.filterStr = {};
        
-        pageService.getAllUserWithPage($stateParams.pageId).then(function (response) {
+        pageService.getAllUserWithPage().then(function (response) {
             $scope.userList = response.data;
         })
 
         $scope.deleteUser = function (index) {
-            pageService.deleteUserWithPage($scope.userList[index]).then(function (response) {
+            pageService.deleteUserWithPage($scope.userList[index].providerUserId).then(function (response) {
                 if(response.data == "success"){
                     $scope.userList.splice(index, 1);
                     $scope.showAlert = showAlert('Delete User Successfully');
@@ -44,7 +44,7 @@ angular
                         $scope.tmp = {};
                        angular.copy(user, $scope.tmp);
                         $scope.tmp.role = answer;
-                        pageService.editRole ($scope.tmp).then(function (response) {
+                        pageService.editRole ($scope.tmp.providerUserId).then(function (response) {
                             var messageEdit = response.data;
 
                             if(messageEdit == 'success'){
