@@ -14,11 +14,12 @@ angular
         
         
         $scope.message = {};
-        $scope.param = oauthService.getToken();
+        $scope.param = $cookies.get('verifyID');
+        $cookies.remove('verifyID');
         $scope.userId = $cookies.get('user-id');
         verifyService.checkToken($scope.userId, $scope.param).then(function (response) {
             var result = response.data;
-            $cookies.remove('verifyID');
+            
             if(result == 'success'){
 
                 $scope.message = "YOU VERIFIED SUCCESSFULLY";

@@ -39,6 +39,12 @@ angular.module('app').run(
                 }
             }
             else {
+                if($cookies.get('verifyID') != null && $cookies.get('verifyID') != ''){
+                    $state.go("app.verify");
+                    event.preventDefault();
+                    return;
+                }
+
                 if(toState.name.indexOf("app.login") == 0) {
                     event.preventDefault();
                     $state.go("app.dashboard");
