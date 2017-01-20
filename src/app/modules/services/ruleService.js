@@ -33,7 +33,7 @@
         }
         function deleteRule(rule){
             return $http({
-                url:  config.basicUrl + "/delete/rule/" + rule.ruleId,
+                url:  config.basicUrl + "delete/rule/" + rule.ruleId,
                 method: 'DELETE'
             })
         }
