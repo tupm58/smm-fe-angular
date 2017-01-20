@@ -1,8 +1,4 @@
-/**
- * Created by thanh huyền on 11-Jan-17.
- */
 'use strict';
-
 angular
     .module('dashboard')
     .controller('inboxCtrl', function ($scope, $rootScope, pageService, $stateParams, postService) {
@@ -22,15 +18,14 @@ angular
         init();
 
         function getPost(page_token) {
-            console.log(page_token);
             FB.api(
-                "me?fields=posts{comments{comment_count},message,created_time,story}&access_token=" + page_token,
+                "me?fields=feed{comments{comment_count},message}&access_token=" + page_token,
                 function (response) {
                     if (response && !response.error) {
-                        console.log(response.posts.data);
-                        var feed = response.posts.data;
+                        console.log(response.feed.data);
+                        var feed = response.feed.data;
                         for (var i = 0; i < feed.length; i++) {
-                            var count = 0;  
+                            var count = 0;
                             if (feed[i].comments) {
                                 var count_comment = 0;
                                 for (var j = 0; j < feed[i].comments.data.length; j++) {
@@ -44,13 +39,13 @@ angular
                             }
                             var post = {
                                 message: feed[i].message,
-                                story: feed[i].story,
                                 created_time: feed[i].created_time,
                                 totalCmt: count,
                                 postId: feed[i].id,
                                 comments: feed[i].comments
                             };
                             $scope.listPost.push(post);
+                            console.log($scope.listPost);
 
                         }
                     }
@@ -68,36 +63,45 @@ angular
                 function (response) {
                     if (response && !response.error) {
                         $scope.postDetail = response;
+                        console.log(response);
                     }
                 }
             );
 
             postService.getComments(post.postId)
                 .then(function (response) {
-                    $scope.Comments = response.data.comments;
+                    $scope.Comments = response;
                     console.log($scope.Comments);
+                    console.log(response);
                 });
 
             angular.forEach($scope.listPost, function (i) {
                 if (i === post) {
                     i.clicked = !i.clicked;
-                    // console.log(i.clicked);
                     $scope.expand = i.clicked;
                 }
                 else {
                     i.clicked = false;
                 }
             });
-        };
-        $scope.deleteComment = function () {
-            postService.deleteComment();
-        };
-        $scope.hideComment = function () {
-            postService.hideComment();
-        };
-
-        $scope.assignComment = function () {
-            postService.assignComment();
         }
+        $scope.review = function (comment) {
+            postService.review(comment.id);
+        }
+        $scope.hideComment = function (comment) {
+            postService.hideComment(comment.id)
+                .then(function (response) {
+                    if (response.data != null){
+                        if(comment.is_hidden == false){
+                            comment.is_hidden  = true;
+                        }else{
+                            comment.is_hidden = false;
+                        }
+                    }
+                    console.log(response);
+                    console.log(comment.id);
+                });
+            console.log(comment.is_hidden );
 
-    });
+        }
+    })

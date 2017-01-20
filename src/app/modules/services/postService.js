@@ -11,44 +11,35 @@
     function postService($rootScope, $http, $cookies, $q, $location, $state) {
 
         return {
-
-            // getPost : getPost
             getComments: getComments,
             deleteComment : deleteComment,
             hideComment: hideComment,
-            assignComment: assignComment
+            review: review
         };
         function getComments(postId) {
             return $http({
-                url: config.basicUrl + "comment/api/" + postId ,
+                url: config.basicUrl + "do-in-post/" + postId ,
                 method: 'GET'
             })
         }
-        function deleteComment() {
+        function deleteComment(commentId) {
             return $http({
-                url: config.basicUrl + "comment/api/" + postId ,
-                method: 'GET'
+                url: config.basicUrl + "comment/" + commentId,
+                method: 'DELETE'
             })
         }
-        function hideComment() {
+        function hideComment(commentId) {
             return $http({
-                url: config.basicUrl + "comment/api/" + postId ,
-                method: 'GET'
+                url: config.basicUrl + "comment/hide/" + commentId,
+                method: 'POST'
             })
         }
-        function assignComment() {
+        function review(commentId) {
             return $http({
-                url: config.basicUrl + "comment/api/" + postId,
+                url: config.basicUrl + "comment/" + commentId,
+                method: 'POST'
+            })
+        }
 
-                // getPost : getPost,
-                getComments: getComments
-            })
-        }
-        // function getComments(postId) {
-        //     return $http({
-        //         url: config.basicUrl + "post/" + postId,
-        //         method: 'GET'
-        //     })
-        // }
     }
     })();
