@@ -1,6 +1,6 @@
 var config = {
-    oauthServiceUrl: 'http://localhost:8080/oauth',
-    basicUrl: 'http://localhost:8080/'
+    oauthServiceUrl: 'http://192.168.1.20:8080/oauth',
+    basicUrl: 'http://192.168.1.20:8080/'
 };
 
 var OAuthConfig = {

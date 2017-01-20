@@ -28,23 +28,22 @@
                         <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar"/>
                     </div>
                     <div flex="90" layout="column">
-                        <!--<div flex="20"><a>{{data.from.name}}</a></div>-->
+                        <div flex="20"><a>{{cmt.from.name}}</a></div>
                         <div flex="50">{{cmt.message}}</div>
                         <div class="mainDetailNav navBar" flex="30">
                             <div class="post-view-nav">
                                 <div class="pull-left">
                                     <div class="btn-toolbar">
                                         <div class="btn-group">
-                                            <button class="btn-item">
-                                                <i class="icon-ok"></i>REVIEW
+                                            <button class="btn-item" ng-click="review(cmt)">
+                                                <i class="icon-ok"></i>
+                                                <div ng-if="comment.reviewed">{{data}}</div>
                                             </button>
-                                            <button class="btn-item" ng-click="assignComment()">
-                                                <i class="icon-ok"></i>ASSIGN
+
+                                            <button class="btn-item" ng-click="hideComment(cmt)">
+                                                <i class="icon-ban-circle"></i>HIDE
                                             </button>
-                                            <button class="btn-item">
-                                                <i class="icon-ban-circle" ng-click="hideComment()"></i>HIDE
-                                            </button>
-                                            <button class="btn-item" ng-click="deleteComment()">
+                                            <button class="btn-item" ng-click="deleteComment(cmt.id)">
                                                 <i class="icon-remove"></i>REMOVE
                                             </button>
                                         </div>
@@ -62,7 +61,7 @@
                             <img ng-src="src/img/bird.jpg" class="md-avatar" alt="avatar"/>
                         </div>
                         <div flex="80">
-                            <!--<a>{{reply.from.name}}</a>-->
+                            <a>{{reply.from.name}}</a>
                             <br/>{{reply.message}}
                             <div class="mainDetailNav navBar">
                                 <div class="post-view-nav">
@@ -72,14 +71,11 @@
                                                 <button class="btn-item" ng-click="">
                                                     <i class="icon-ok"></i>REVIEW
                                                 </button>
-                                                <button class="btn-item" ng-click="assignComment()">
-                                                    <i class="icon-ok"></i>ASSIGN
-                                                </button>
-                                                <button class="btn-item" ng-click="hideComment()">
+                                                <button class="btn-item" ng-click="hideComment(reply.id)">
                                                     <i class="icon-ban-circle"></i>HIDE
                                                 </button>
                                                 <button class="btn-item">
-                                                    <i class="icon-remove" ng-click="deleteComment()"></i>REMOVE
+                                                    <i class="icon-remove" ng-click="deleteComment(reply.id)"></i>REMOVE
                                                 </button>
 
                                             </div>

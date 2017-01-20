@@ -4,7 +4,7 @@ angular.module('services').factory('httpRequestInterceptor', function ($rootScop
             $rootScope.showToaster = true;
             if ($rootScope.authToken) {
                 requestConfig.headers['Authorization'] = $rootScope.authToken;
-                requestConfig.headers['access_token'] = $rootScope.pageAccessToken;
+                requestConfig.headers['PageToken'] = $rootScope.pageAccessToken;
                 requestConfig.headers['Cache-Control'] = 'private, no-cache, no-store, must-revalidate';
                 requestConfig.headers['Expires'] = '-1';
                 requestConfig.headers['Pragma'] = 'no-cache';

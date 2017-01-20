@@ -1,8 +1,8 @@
+
 /**
  * Created by thanh huyền on 11-Jan-17.
  */
 'use strict';
-
 angular
     .module('dashboard')
     .controller('inboxCtrl', function ($scope, $rootScope, pageService, $stateParams, postService) {
@@ -60,6 +60,9 @@ angular
         $scope.expand = false;
         $scope.postDetail = [];
         $scope.Comments = [];
+        $scope.data = {
+            text: null
+        }
         $scope.getComments = function (post) {
             FB.api(
                 post.postId + "?fields=message,full_picture,type,actions,permalink_url,comments{from,message,comments{message,from}}&access_token=" + $rootScope.pageAccessToken,
@@ -73,8 +76,9 @@ angular
 
             postService.getComments(post.postId)
                 .then(function (response) {
-                    $scope.Comments = response.data.comments;
+                    $scope.Comments = response;
                     console.log($scope.Comments);
+                    console.log(response);
                 });
 
             angular.forEach($scope.listPost, function (i) {
@@ -87,15 +91,28 @@ angular
                 }
             });
         }
-        $scope.deleteComment = function () {
-            postService.deleteComment();
+        $scope.review = function (comment) {
+
+
+            postService.review(comment.id);
+            if(!comment.review){
+                $scope.data= "REVIEW";
+            }
+            else $scope.data= "REVIEWED";
+        }
+        $scope.deleteComment = function (commentId) {
+            postService.deleteComment(commentId);
         };
-        $scope.hideComment = function () {
-            postService.hideComment();
+        $scope.hideComment = function (comment) {
+            postService.hideComment(comment.id)
+                .then(function (response) {
+                    console.log(response);
+                });
+            console.log(comment.isHidden);
+
         }
 
-        $scope.assignComment = function () {
-            postService.assignComment();
-        }
 
     })
+
+
