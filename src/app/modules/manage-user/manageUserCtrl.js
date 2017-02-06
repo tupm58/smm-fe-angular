@@ -39,7 +39,7 @@ angular
                 targetEvent: ev,
                 clickOutsideToClose:true
             })
-                .then(function(answer) {
+                .then(function(answer) {//cmt
                     if(user.role != answer){
                         $scope.tmp = {};
                        angular.copy(user, $scope.tmp);
@@ -48,7 +48,7 @@ angular
                             var messageEdit = response.data;
 
                             if(messageEdit == 'success'){
-                                user.role = answer;
+                                user.role = answer;//cmt
                                 showAlert('Edit Role Successfully');
                             }else{
                                 showAlert("Don't edit role of this User");
