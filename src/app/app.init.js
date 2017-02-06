@@ -21,6 +21,7 @@ angular.module('app').run(
                 event.preventDefault();
                 return;
             }
+
             
             var authToken = $cookies.get('auth-token');
             if(toState.name.indexOf("verify")==4 && ($cookies.get('verifyID') == null || $cookies.get('verifyID') == ''))
